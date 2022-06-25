@@ -1,9 +1,9 @@
 {
-    "name": "gapp",
+    "name": "gapp-3",
     "version": "0.0.1",
     "engines": {
         "node": "14.16.0"
-      }
+      },
     "scripts":{
         "start": "cd server && npm run start",
         "prepare": "cd server && npm i"
