@@ -5,7 +5,7 @@
         "node": "14.16.0"
       },
     "scripts":{
-        "start": "cd server && npm run start",
-        "prepare": "cd server && npm i"
+        "start": "cd gapp-server && npm run start",
+        "prepare": "cd gapp-server && npm i"
     }
 }
