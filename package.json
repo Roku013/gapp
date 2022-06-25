@@ -1,5 +1,5 @@
 {
-    "name": "gapp-3",
+    "name": "gapp",
     "version": "0.0.1",
     "engines": {
         "node": "14.16.0"
