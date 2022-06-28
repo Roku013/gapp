@@ -1,7 +1,11 @@
 import io from 'socket.io-client';
 import { useEffect, useState } from 'react';
+// require('dotenv').config();
+// import deploymentURL
 
-const socket = io.connect('http://localhost:3001');
+const hostURL = 'http://localhost:3001' || 'http://iron-gapp.netlify.com';
+
+const socket = io.connect(hostURL);
 
 const HomePage = () => {
   const [message, setMessage] = useState('');
