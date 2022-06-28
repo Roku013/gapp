@@ -7,6 +7,9 @@ const debug = require('debug')('gapp-server:server');
 const app = require('./app');
 const mongoose = require('mongoose');
 
+const http = require('http');
+const configureSocketIo = require('./configure-socket-io');
+
 const PORT = Number(process.env.PORT, 10);
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -53,7 +56,12 @@ const onListening = (server) => {
 const initiate = () => {
   app.set('port', PORT);
 
-  const server = app.listen(PORT);
+  const server = http.createServer(app);
+
+  configureSocketIo(server);
+
+  server.listen(PORT);
+
   server.on('error', (error) => onError(error));
   server.on('listening', () => onListening(server));
 };

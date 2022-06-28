@@ -8,6 +8,7 @@ import LogInPage from './pages/LogInPage';
 import Navbar from './components/Navbar';
 import AuthenticationContext from './context/authentication';
 import { loadUserInformation } from './services/authentication';
+import MessageThread from './pages/MessageThread';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/log-in" element={<LogInPage />} />
+          <Route path="/group/:id" element={<MessageThread />} />
         </Routes>
       </BrowserRouter>
     </AuthenticationContext.Provider>

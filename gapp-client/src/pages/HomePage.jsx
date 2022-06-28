@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 const hostURL = process.env.REACT_APP_REST_API_URL;
 
-const socket = io.connect(hostURL);
+const socket = io(hostURL);
 
 const HomePage = () => {
   const [message, setMessage] = useState('');
@@ -19,6 +19,14 @@ const HomePage = () => {
       setMessageReceived(data.message);
     });
   });
+
+  /*
+  useEffect(() => {
+    setInterval(() => {
+      listLatestMessages().then()
+    }, 5000);
+  }, []);
+*/
 
   return (
     <div className="App">
