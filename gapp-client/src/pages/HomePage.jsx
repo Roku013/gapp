@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 // require('dotenv').config();
 // import deploymentURL
 
-const hostURL = 'http://localhost:3001' || 'https://iron-gapp.netlify.app';
+const hostURL = process.env.REACT_APP_REST_API_URL;
 
 const socket = io.connect(hostURL);
 
