@@ -1,11 +1,11 @@
 {
-  "name": "gapp-server",
+  "name": "server-chat-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node ./server",
     "dev": "nodemon ./server -e js,hbs",
-    "dev:debug": "DEBUG=gapp-server* npm run dev",
+    "dev:debug": "DEBUG=server-chat-app* npm run dev",
     "lint": "eslint ."
   },
   "dependencies": {

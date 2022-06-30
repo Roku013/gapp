@@ -3,11 +3,10 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-const debug = require('debug')('gapp-server:server');
-const app = require('./app');
+const debug = require('debug')('server-chat-app:server');
 const mongoose = require('mongoose');
-
 const http = require('http');
+const app = require('./app');
 const configureSocketIo = require('./configure-socket-io');
 
 const PORT = Number(process.env.PORT, 10);
