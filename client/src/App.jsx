@@ -6,7 +6,7 @@ import RegisterPage from './pages/RegisterPage';
 import LogInPage from './pages/LogInPage';
 import RoomPage from './pages/RoomPage';
 
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 import AuthenticationContext from './context/authentication';
 import { loadUserInformation } from './services/authentication';
 
@@ -22,7 +22,7 @@ const App = () => {
   return (
     <AuthenticationContext.Provider value={{ user, setUser }}>
       <BrowserRouter>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<RegisterPage />} />

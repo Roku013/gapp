@@ -17,9 +17,7 @@ const RoomPage = () => {
   const handleSubmission = (event) => {
     event.preventDefault();
     if (socket && content.length > 0) {
-      console.log(content);
       setContent('');
-
       socket.emit('send_message', { content });
     }
   };
