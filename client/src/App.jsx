@@ -9,6 +9,8 @@ import RoomPage from './pages/RoomPage';
 // import Navbar from './components/Navbar';
 import AuthenticationContext from './context/authentication';
 import { loadUserInformation } from './services/authentication';
+import GroupPage from './pages/GroupPage';
+import SingleGroupPage from './pages/SingleGroupPage';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -25,6 +27,8 @@ const App = () => {
         {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/group" element={<GroupPage />} />
+          <Route path="/group/:id" element={<SingleGroupPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/log-in" element={<LogInPage />} />
           <Route path="/room/:id" element={<RoomPage />} />

@@ -14,6 +14,7 @@ const roomRouter = require('./routes/room');
 const authenticationRouter = require('./routes/authentication');
 const expressSessionOptions = require('./express-session-options.js');
 const corsOptions = require('./cors-options.js');
+const groupRouter = require('./routes/group');
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(bindUserToViewLocals);
 app.use('/', baseRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/room', roomRouter);
+app.use('/group', groupRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
