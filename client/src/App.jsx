@@ -11,6 +11,7 @@ import AuthenticationContext from './context/authentication';
 import { loadUserInformation } from './services/authentication';
 import GroupPage from './pages/GroupPage';
 import SingleGroupPage from './pages/SingleGroupPage';
+import GroupAddPage from './pages/GroupAddPage';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -28,6 +29,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/group" element={<GroupPage />} />
+          <Route path="/add" element={<GroupAddPage />} />
           <Route path="/group/:id" element={<SingleGroupPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/log-in" element={<LogInPage />} />

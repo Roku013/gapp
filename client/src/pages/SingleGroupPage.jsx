@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import AuthenticationContext from '../context/authentication';
+//import AuthenticationContext from '../context/authentication';
 import { groupLoad } from '../services/group';
 
 const SingleGroupPage = () => {
@@ -14,7 +14,7 @@ const SingleGroupPage = () => {
 
   console.log(group);
 
-  const { user } = useContext(AuthenticationContext);
+  // const { user } = useContext(AuthenticationContext);
 
   return (
     <div>

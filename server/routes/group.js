@@ -7,21 +7,20 @@ const routeGuard = require('./../middleware/route-guard');
 
 const router = new express.Router();
 
-//display single group
-router.get('/:id', (req, res, next) => {
-  const { id } = req.params;
-  Group.findById(id)
-    .populate('creator')
-    .then((group) => {
-      res.json({ group });
+//display all groups
+router.get('/', (req, res, next) => {
+  let groups;
+  Group.find()
+    .then((groups) => {
+      res.json({ groups });
     })
     .catch((error) => next(error));
 });
 
 // group creation
-router.post('/', routeGuard, (req, res, next) => {
-  const { name, description, creator } = req.body;
-  // const { creator } = req.user._id;
+router.post('/add', routeGuard, (req, res, next) => {
+  const { name, description } = req.body;
+  const { creator } = req.user._id;
   console.log(name);
 
   Group.create({
@@ -29,6 +28,17 @@ router.post('/', routeGuard, (req, res, next) => {
     description,
     creator: req.user._id
   })
+    .then((group) => {
+      res.json({ group });
+    })
+    .catch((error) => next(error));
+});
+
+//display single group
+router.get('/:id', (req, res, next) => {
+  const { id } = req.params;
+  Group.findById(id)
+    .populate('creator')
     .then((group) => {
       res.json({ group });
     })
