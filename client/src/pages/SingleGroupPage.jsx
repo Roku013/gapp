@@ -17,9 +17,10 @@ const SingleGroupPage = (req) => {
   };
 
   const { user } = useContext(AuthenticationContext);
-  console.log(user);
+
   return (
     <div>
+      {user && <Link to={`/group/`}>Back</Link>}
       <h1> single group page </h1>
       <p>Log in to see the content</p>
       {user && group && (
