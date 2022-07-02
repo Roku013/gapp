@@ -29,26 +29,28 @@ const ProfilePage = () => {
   return (
     <div>
       {profile && (
-        <header>
+        <div className='profile-info'>
           <img
             src={
               profile.picture
               // <FontAwesomeIcon icon='fa-solid fa-circle-user' />
             }
-            alt={profile.name}
+            alt
           />
           <h1>{profile.name}</h1>
-        </header>
+        </div>
       )}
-
-      {user && user._id === id && (
-        <Link className='settings-profile' to='/profile/edit'>
-          Settings
-        </Link>
-      )}
-      <form onSubmit={handleSignout}>
-        <button className='-green sign-out'>Sign Out</button>
-      </form>
+      <div className='user-options'>
+        {user && user._id === id && (
+          <Link className='settings-profile' to='/profile/edit'>
+            Settings
+          </Link>
+        )}
+        <h1>Profile</h1>
+        <form onSubmit={handleSignout}>
+          <button className='sign-out'>Sign Out</button>
+        </form>
+      </div>
     </div>
   );
 };
