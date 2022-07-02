@@ -15,6 +15,7 @@ const profileRouter = require('./routes/profile');
 const authenticationRouter = require('./routes/authentication');
 const expressSessionOptions = require('./express-session-options.js');
 const corsOptions = require('./cors-options.js');
+const groupRouter = require('./routes/group');
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use('/', baseRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/room', roomRouter);
 app.use('/profile', profileRouter);
+app.use('/group', groupRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

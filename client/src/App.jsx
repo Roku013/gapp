@@ -11,6 +11,9 @@ import ProfileEditPage from "./pages/ProfileEditPage";
 // import Navbar from './components/Navbar';
 import AuthenticationContext from "./context/authentication";
 import { loadUserInformation } from "./services/authentication";
+import GroupPage from "./pages/GroupPage";
+import SingleGroupPage from "./pages/SingleGroupPage";
+import GroupAddPage from "./pages/GroupAddPage";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -27,11 +30,14 @@ const App = () => {
         {/* <Navbar /> */}
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/register' element={<RegisterPage />} />
-          <Route path='/log-in' element={<LogInPage />} />
           <Route path='/profile/:id' element={<ProfilePage />} />
           <Route path='/profile/edit' element={<ProfileEditPage />} />
 
+          <Route path='/group' element={<GroupPage />} />
+          <Route path='/add' element={<GroupAddPage />} />
+          <Route path='/group/:id' element={<SingleGroupPage />} />
+          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/log-in' element={<LogInPage />} />
           <Route path='/room/:id' element={<RoomPage />} />
         </Routes>
       </BrowserRouter>

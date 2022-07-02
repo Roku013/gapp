@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { profileLoad } from "../services/profile";
 import { signOutUser } from "../services/authentication";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthenticationContext from "../context/authentication";
 
 const ProfilePage = () => {
@@ -32,9 +32,8 @@ const ProfilePage = () => {
         <header>
           <img
             src={
-              profile.picture || (
-                <FontAwesomeIcon icon='fa-solid fa-circle-user' />
-              )
+              profile.picture
+              // <FontAwesomeIcon icon='fa-solid fa-circle-user' />
             }
             alt={profile.name}
           />
