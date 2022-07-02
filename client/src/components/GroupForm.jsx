@@ -6,11 +6,14 @@ const GroupForm = ({ group, onGroupChange, onGroupSubmit, buttonLabel }) => {
 
   return (
     <form onSubmit={handleGroupFormSubmission}>
-      <label htmlFor="input-listed">Group name:</label>
+      <label htmlFor="input-listed">
+        <p>Group name:</p>
+      </label>
       <div>
         <input
           id="input-listed"
           type="text"
+          placeholder="Add group name"
           value={group.name}
           onChange={(event) =>
             onGroupChange({ ...group, name: event.target.value })
@@ -18,11 +21,14 @@ const GroupForm = ({ group, onGroupChange, onGroupSubmit, buttonLabel }) => {
         />
       </div>
 
-      <label htmlFor="input-listed">Group description:</label>
+      <label htmlFor="input-listed">
+        <p>Group description:</p>
+      </label>
       <div>
         <input
           id="input-listed"
           type="text"
+          placeholder="Add description"
           value={group.description}
           onChange={(event) =>
             onGroupChange({ ...group, description: event.target.value })
@@ -30,7 +36,7 @@ const GroupForm = ({ group, onGroupChange, onGroupSubmit, buttonLabel }) => {
         />
       </div>
 
-      <button>{buttonLabel}</button>
+      <button className="-green">{buttonLabel}</button>
     </form>
   );
 };
