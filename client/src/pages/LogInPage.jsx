@@ -15,6 +15,7 @@ const LogInPage = () => {
     event.preventDefault();
     logInUser({ email, password }).then((data) => {
       setUser(data.user);
+      const id = data.user._id;
       navigate(`/profile/${id}`);
     });
   };
