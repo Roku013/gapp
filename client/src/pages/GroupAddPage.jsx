@@ -5,17 +5,15 @@ import GroupForm from '../components/GroupForm';
 
 const GroupAddPage = () => {
   const [group, setGroup] = useState({
-    name: 'Enter group name',
-    description: 'Add description'
+    name: '',
+    description: ''
   });
 
   const navigate = useNavigate();
 
   const handleGroupCreation = () => {
     groupAdd(group).then((data) => {
-      console.log(data);
       const id = data.group._id;
-      console.log(id);
       navigate(`/group/${id}`);
     });
   };

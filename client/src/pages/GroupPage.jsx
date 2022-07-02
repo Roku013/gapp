@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import GroupCard from '../components/GroupCard';
 import { listGroups } from '../services/group';
 
@@ -15,10 +16,16 @@ const GroupPage = () => {
   console.log(groups);
   return (
     <div>
-      <h2>List of groups</h2>
+      <p>
+        <Link to="/add">ADD NEW GROUP</Link>
+      </p>
+
+      <p>
+        <h2>List of groups</h2>
+      </p>
       {groups.map((group) => (
-        <p>
-          <GroupCard key={group._id} group={group} />
+        <p key={group._id}>
+          <GroupCard group={group} />
         </p>
       ))}
     </div>
