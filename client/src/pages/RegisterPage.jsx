@@ -1,11 +1,11 @@
 import { useContext, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AuthenticationContext from '../context/authentication';
 import { registerUser } from '../services/authentication';
 import { Link } from 'react-router-dom';
 
 const RegisterPage = () => {
-  // const { id } = useParams();
+
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -19,8 +19,6 @@ const RegisterPage = () => {
     registerUser({ name, email, password }).then((data) => {
       setUser(data.user);
       const id = data.user._id;
-      console.log('my id' + id);
-
       navigate(`/profile/${id}`);
     });
   };

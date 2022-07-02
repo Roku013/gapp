@@ -27,30 +27,34 @@ const ProfilePage = () => {
   };
 
   return (
-    <div>
-      {profile && (
-        <div className='profile-info'>
-          <img
-            src={
-              profile.picture
-              // <FontAwesomeIcon icon='fa-solid fa-circle-user' />
-            }
-            alt
-          />
-          <h1>{profile.name}</h1>
-        </div>
-      )}
+    <div className='profile-page'>
       <div className='user-options'>
         {user && user._id === id && (
-          <Link className='settings-profile' to='/profile/edit'>
+          <button
+            className='settings-profile'
+            onClick={() => navigate("/profile/edit")}
+          >
             Settings
-          </Link>
+          </button>
         )}
-        <h1>Profile</h1>
+        <h1 className='profile-name'>Profile</h1>
         <form onSubmit={handleSignout}>
-          <button className='sign-out'>Sign Out</button>
+          <button className='sign-out'>Logout</button>
         </form>
       </div>
+      {profile && (
+        <header className='user-info'>
+          <img
+            className='profile-img'
+            src={
+              profile.picture ||
+              "https://images.unsplash.com/photo-1504593811423-6dd665756598?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
+            }
+            alt={profile.name}
+          />
+          <h1>{profile.name}</h1>
+        </header>
+      )}
     </div>
   );
 };

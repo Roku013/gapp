@@ -11,7 +11,6 @@ const ProfileEditPage = () => {
   const navigate = useNavigate();
 
   const { user, setUser } = useContext(AuthenticationContext);
-
   useEffect(() => {
     if (user) {
       profileLoad(user._id).then((data) => setProfile(data.profile));
@@ -19,10 +18,13 @@ const ProfileEditPage = () => {
   }, [user]);
 
   const handleEditProfile = () => {
-    profileEdit(profile).then((data) => {
-      setUser(data.profile);
-      navigate("/");
+    let id = user._id;
+    let userEdit = { name, email };
+    profileEdit(id, userEdit).then(() => {
+      //setUser(data.profile);
+      return;
     });
+    navigate(`/profile/${id}`);
   };
 
   return (

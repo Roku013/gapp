@@ -19,11 +19,15 @@ router.get('/:id', (req, res, next) => {
     });
 });
 
-router.patch('/', routeGuard, (req, res, next) => {
+router.patch('/:id', routeGuard, (req, res, next) => {
+  console.log('hello');
+  const { id } = req.params;
   const { name, email, picture } = req.body;
-  User.findByIdAndUpdate(req.user._id, { name, email, picture }, { new: true })
+  console.log('name, email ' + name + email);
+  User.findByIdAndUpdate(id, { name, email, picture }, { new: true })
     .then((user) => {
-      res.json({ profile: user });
+      console.log(user);
+      res.json({ user });
     })
     .catch((error) => {
       next(error);
