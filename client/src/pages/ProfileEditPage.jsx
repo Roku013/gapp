@@ -15,7 +15,7 @@ const ProfileEditPage = () => {
     if (user) {
       profileLoad(user._id).then((data) => setProfile(data.profile));
     }
-  }, [user]);
+  });
 
   const handleEditProfile = () => {
     let id = user._id;
