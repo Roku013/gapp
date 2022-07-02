@@ -42,12 +42,12 @@ const ProfilePage = () => {
       )}
 
       {user && user._id === id && (
-        <Link className='btn' to='/profile/edit'>
-          Edit Profile
+        <Link className='settings-profile' to='/profile/edit'>
+          Settings
         </Link>
       )}
       <form onSubmit={handleSignout}>
-        <button>Sign Out</button>
+        <button className='-green sign-out'>Sign Out</button>
       </form>
     </div>
   );
