@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { profileLoad } from '../services/profile';
 import { signOutUser } from '../services/authentication';
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -53,6 +53,9 @@ const ProfilePage = () => {
             alt={profile.name}
           />
           <h1>{profile.name}</h1>
+          <p>
+            <Link to="/group">Group List</Link>
+          </p>
         </header>
       )}
     </div>

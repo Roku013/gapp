@@ -20,8 +20,9 @@ const SingleGroupPage = (req) => {
   console.log(user);
   return (
     <div>
-      <h3> single group page </h3>
-      {group && (
+      <h1> single group page </h1>
+      <p>Log in to see the content</p>
+      {user && group && (
         <div>
           <p>name: {group.name}</p>
           <p>creator: {group.creator.name}</p>

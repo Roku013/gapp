@@ -17,12 +17,11 @@ const GroupPage = () => {
   return (
     <div>
       <p>
-        <Link to="/add">ADD NEW GROUP</Link>
+        <Link to="/add">CREATE NEW GROUP</Link>
       </p>
 
-      <p>
-        <h2>List of groups</h2>
-      </p>
+      <h1>List of groups</h1>
+
       {groups.map((group) => (
         <p key={group._id}>
           <GroupCard group={group} />
