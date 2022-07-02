@@ -1,14 +1,21 @@
 {
-  "name": "gapp",
-  "version": "0.0.1",
-  "engines": {
-    "node": "14.16.0"
-  },
+  "name": "ironhack-gapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "cd gapp-server && npm run start",
-    "prepare": "cd gapp-server && npm i"
+    "start": "cd server && npm run start",
+    "prepare": "cd server && npm i",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "axios": "^0.27.2"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HoninghCode/ironhack-gapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HoninghCode/ironhack-gapp/issues"
+  },
+  "homepage": "https://github.com/HoninghCode/ironhack-gapp#readme"
 }
