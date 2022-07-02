@@ -35,10 +35,11 @@ const SingleGroupPage = (req) => {
                 action="/group"
                 onSubmit={handleGroupRemoval}
               >
-                <button>Delete group</button>
+                <button className="-green">Delete group</button>
               </form>
-              <Link to={`/group/${id}/edit`} className="btn">
-                <button>Edit group</button>
+              <br />
+              <Link to={`/group/${id}/edit`}>
+                <button className="-green">Edit group</button>
               </Link>
             </div>
           )}
