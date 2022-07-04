@@ -8,6 +8,7 @@ const ProfileEditPage = () => {
   const [profile, setProfile] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [picture, setPicture] = useState("");
   const navigate = useNavigate();
 
   const { user, setUser } = useContext(AuthenticationContext);
@@ -19,23 +20,25 @@ const ProfileEditPage = () => {
 
   const handleEditProfile = () => {
     let id = user._id;
-    let userEdit = { name, email };
-    profileEdit(id, userEdit).then(() => {
-      //setUser(data.profile);
-      return;
+    let userEdit = { name, email, picture };
+    profileEdit(id, userEdit).then((data) => {
+      setUser(data.profile);
     });
     navigate(`/profile/${id}`);
   };
 
   return (
-    <div>
+    <div className='edit-form'>
       <form onSubmit={handleEditProfile}>
+        <label htmlFor='Name'>Name</label>
+
         <input
           id='input-name'
           placeholder='Name'
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
+        <label htmlFor='Email'>Email</label>
 
         <input
           id='input-email'
@@ -44,8 +47,16 @@ const ProfileEditPage = () => {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
+        <label htmlFor='Picture'>Picture</label>
 
-        <button className='-green'>Edit profile</button>
+        <input
+          id='input-picture'
+          type='file'
+          placeholder='Picture'
+          value={picture}
+          onChange={(event) => setPicture(event.target.value)}
+        />
+        <button className='-green edit-btn'>Edit profile</button>
       </form>
     </div>
   );

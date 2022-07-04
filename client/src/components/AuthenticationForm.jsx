@@ -43,7 +43,7 @@ const AuthenticationForm = (props) => {
           <label htmlFor='input-picture'>Picture</label>
           <input
             id='input-picture'
-            type='text'
+            type='file'
             placeholder='Picture'
             value={props.user.picture}
             onChange={(event) =>
@@ -59,7 +59,7 @@ const AuthenticationForm = (props) => {
         </>
       )}
 
-      {props.displayInputs.includes("password") && (
+      {/* {props.displayInputs.includes("password") && (
         <>
           <label htmlFor='input-password'>Password</label>
           <input
@@ -75,9 +75,9 @@ const AuthenticationForm = (props) => {
             }
           />
         </>
-      )}
+      )} */}
 
-      <button>{props.buttonLabel}</button>
+      <button className='-green'>{props.buttonLabel}</button>
     </form>
   );
 };
