@@ -8,6 +8,7 @@ const routeGuard = require('./../middleware/route-guard');
 router.get('/:id', routeGuard, (req, res, next) => {
   const { id } = req.params;
   Message.find({ room: id })
+    .populate('user')
     .then((messages) => {
       res.json({ messages });
     })

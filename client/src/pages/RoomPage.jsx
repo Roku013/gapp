@@ -30,6 +30,8 @@ const RoomPage = () => {
   useEffect(() => {
     // Load current room information
     loadRoom(id).then((data) => {
+      // console.log(data.user.name);
+      console.log(data.messages);
       setMessages(data.messages);
     });
 
