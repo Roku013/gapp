@@ -45,7 +45,7 @@ const RoomPage = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className="room">
       <h1>Room: {id}</h1>
       <ul>
         {messages.map((message) => (
@@ -55,7 +55,7 @@ const RoomPage = () => {
           </li>
         ))}
       </ul>
-      <form onSubmit={handleSubmission}>
+      <form className="message" onSubmit={handleSubmission}>
         <input type="text" onChange={handleContentChange} value={content} />
         <button>Send</button>
       </form>
