@@ -34,6 +34,39 @@ router.post('/add', routeGuard, (req, res, next) => {
     .catch((error) => next(error));
 });
 
+// remove group
+router.delete('/:id', (req, res, next) => {
+  const { id } = req.params;
+
+  Group.findByIdAndRemove(id)
+    .then(() => {
+      res.redirect('/group');
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+// edit group
+router.patch('/:id', routeGuard, (req, res, next) => {
+  const { id } = req.params;
+  const { name, description, members } = req.body;
+  const creator = req.user._id;
+  Group.findOneAndUpdate(
+    { _id: id, creator },
+    { name, description, members },
+    { new: true }
+  )
+
+    .then((group) => {
+      console.log(group);
+      res.json({ group });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 //display single group
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;

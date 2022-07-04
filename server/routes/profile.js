@@ -23,7 +23,8 @@ router.patch('/:id', routeGuard, (req, res, next) => {
   console.log('hello');
   const { id } = req.params;
   const { name, email, picture } = req.body;
-  console.log('name, email ' + name + email);
+
+  console.log('name, email, picture ' + name + email);
   User.findByIdAndUpdate(id, { name, email, picture }, { new: true })
     .then((user) => {
       console.log(user);

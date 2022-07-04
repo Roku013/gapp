@@ -11,18 +11,18 @@ const ProfileEditPage = () => {
   const [picture, setPicture] = useState("");
   const navigate = useNavigate();
 
-  const { user, setUser } = useContext(AuthenticationContext);
+  const { user } = useContext(AuthenticationContext);
   useEffect(() => {
     if (user) {
       profileLoad(user._id).then((data) => setProfile(data.profile));
     }
-  }, [user]);
+  });
 
   const handleEditProfile = () => {
     let id = user._id;
     let userEdit = { name, email, picture };
     profileEdit(id, userEdit).then((data) => {
-      setUser(data.profile);
+      //setUser(data.profile);
     });
     navigate(`/profile/${id}`);
   };
@@ -52,6 +52,7 @@ const ProfileEditPage = () => {
         <input
           id='input-picture'
           type='file'
+          accept='image/*'
           placeholder='Picture'
           value={picture}
           onChange={(event) => setPicture(event.target.value)}

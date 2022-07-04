@@ -20,12 +20,12 @@ const GroupAddPage = () => {
 
   return (
     <div>
-      <h1>Add New Group</h1>
+      <h1>Create New Group</h1>
       <GroupForm
         group={group}
         onGroupChange={setGroup}
         onGroupSubmit={handleGroupCreation}
-        buttonLabel="Add new Group"
+        buttonLabel="Create new Group"
       />
     </div>
   );
