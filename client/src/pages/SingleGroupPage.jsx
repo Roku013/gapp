@@ -1,19 +1,13 @@
-import React, { useContext } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import AuthenticationContext from '../context/authentication';
+// import { Link, useParams } from 'react-router-dom';
 import RoomPage from './RoomPage';
 
 const SingleGroupPage = () => {
-  const { id } = useParams();
+  // const { id } = useParams();
 
-  const { user } = useContext(AuthenticationContext);
+  // const { user } = useContext(AuthenticationContext);
 
   return (
     <div>
-      {user && <Link to={`/group/`}>Back</Link>}
-      {user && <Link to={`/group/profile/${id}`}>Profile</Link>}
-      <h1> single group/chat page </h1>
-
       <RoomPage />
     </div>
   );

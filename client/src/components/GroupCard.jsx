@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 const GroupCard = ({ group }) => (
   <div>
     <Link to={`/group/${group._id}`}>
-      <span>{group.name} </span>
+      <p>{group.name} </p>
       <br />
     </Link>
-    <small>{group.description}</small>
+    <p>{group.description}</p>
   </div>
 );
 
