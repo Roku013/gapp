@@ -1,7 +1,7 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
 import AuthenticationContext from '../context/authentication';
-import { profileLoad, profileEdit } from '../services/profile';
+import { profileEdit } from '../services/profile';
 import { useNavigate } from 'react-router-dom';
 
 const ProfileEditPage = () => {
