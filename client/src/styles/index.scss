@@ -1,6 +1,6 @@
 $heigth-header: 70px;
 $heigth-input: 66px;
-$heigth-chat: calc((100vh - $heigth-header) - $heigth-input);
+// $heigth-chat: calc((100% - $heigth-header) - $heigth-input);
 
 *,
 *:before,
@@ -21,7 +21,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   max-width: 400px;
   height: 100%;
-  height: -webkit-fill-available;
   // border: solid 1px gray;
 }
 
@@ -111,17 +110,6 @@ button {
   }
 }
 
-// .sign-out {
-//   border: none;
-//   background: none;
-//   color: #e8e8e8;
-//   margin-right: 80px;
-//   position: relative;
-//   left: -50px;
-//   top: 2px;
-//   cursor: pointer;
-// }
-
 .profile-page {
   .header {
     width: 100%;
@@ -179,7 +167,6 @@ button {
   }
 }
 .room {
-  // height: 844px;
   position: relative;
 
   .header {
@@ -228,8 +215,7 @@ button {
   }
 
   .chat {
-    height: $heigth-chat;
-    // height: -webkit-fill-available;
+    // height: $heigth-chat;
     overflow: auto;
     display: flex;
     flex-direction: column-reverse;
@@ -241,6 +227,7 @@ button {
     width: 340px;
     margin: 0 auto;
     height: $heigth-input;
+    background: white;
 
     input {
       width: 340px;

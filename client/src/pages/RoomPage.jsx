@@ -51,6 +51,8 @@ const RoomPage = () => {
 
   const { user } = useContext(AuthenticationContext);
 
+  let innerHeight = window.innerHeight;
+
   return (
     <div className="room">
       <div className="header">
@@ -68,7 +70,7 @@ const RoomPage = () => {
 
         <h1>{id}</h1>
       </div>
-      <div className="chat">
+      <div className="chat" style={{ height: innerHeight - 136 }}>
         <ul>
           {messages.map((message) => (
             <li key={message._id}>
