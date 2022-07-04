@@ -1,22 +1,21 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import AuthenticationContext from "../context/authentication";
-import { profileLoad, profileEdit } from "../services/profile";
+import { profileEdit } from "../services/profile";
 import { useNavigate } from "react-router-dom";
 
 const ProfileEditPage = () => {
-  const [profile, setProfile] = useState("");
+  // const [setProfile] = useState('');
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [picture, setPicture] = useState("");
   const navigate = useNavigate();
 
   const { user } = useContext(AuthenticationContext);
-  useEffect(() => {
-    if (user) {
-      profileLoad(user._id).then((data) => setProfile(data.profile));
-    }
-  });
+  // useEffect(() => {
+  //   if (user) {
+  //     profileLoad(user._id).then((data) => setProfile(data.profile));
+  //   }
+  // });
 
   const handleEditProfile = () => {
     let id = user._id;

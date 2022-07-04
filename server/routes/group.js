@@ -34,6 +34,22 @@ router.post('/add', routeGuard, (req, res, next) => {
     .catch((error) => next(error));
 });
 
+// add group member
+/*
+router.post('/:id/member/add', (req, res, next) => {
+  const userId = User._id;
+  console.log('userID: ' + userId);
+
+  User.findById(userId).then((user) => {
+    Group.findByIdAndUpdate(req.group.id, { $push: { members: user._id } })
+      .then(() => {
+        console.log('member is added to the group');
+        res.redirect(`/group`);
+      })
+      .catch((err) => next(err));
+  });
+});*/
+
 // remove group
 router.delete('/:id', (req, res, next) => {
   const { id } = req.params;

@@ -28,22 +28,22 @@ const ProfilePage = () => {
 
   return (
     <div className='profile-page'>
-      <div className='user-options'>
+      <div className='header'>
         {user && user._id === id && (
           <button
-            className='settings-profile'
+            className='settings'
             onClick={() => navigate("/profile/edit")}
           >
             Settings
           </button>
         )}
-        <h1 className='profile-name'>Profile</h1>
         <form onSubmit={handleSignout}>
           <button className='sign-out'>Logout</button>
         </form>
+        <h1>Profile</h1>
       </div>
       {profile && (
-        <header className='user-info'>
+        <div className='user-info'>
           <img
             className='profile-img'
             src={
@@ -56,7 +56,7 @@ const ProfilePage = () => {
           <p>
             <Link to='/group'>Group List</Link>
           </p>
-        </header>
+        </div>
       )}
 
       <div className='group-list slide'>

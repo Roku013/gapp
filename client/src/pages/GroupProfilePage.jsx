@@ -21,7 +21,7 @@ const GroupProfilePage = (req) => {
   return (
     <div>
       {user && <Link to={`/group/`}>Back</Link>}
-      <h1> single group page </h1>
+      <h1> group profile page </h1>
       {user && group && (
         <div>
           <p>name: {group.name}</p>
@@ -42,6 +42,12 @@ const GroupProfilePage = (req) => {
               <Link to={`/group/edit/${id}`}>
                 <button className="-green">Edit group</button>
               </Link>
+
+              <br />
+              <Link to={`/group/${id}/member/add`}>
+                <button className="-green">Add/Remove members</button>
+              </Link>
+              <br />
             </div>
           )}
         </div>

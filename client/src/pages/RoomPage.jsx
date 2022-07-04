@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { io } from 'socket.io-client';
 import { loadRoom } from '../services/room';
+import { Link } from 'react-router-dom';
 
 const RoomPage = () => {
   const [socket, setSocket] = useState(null);
@@ -45,19 +46,38 @@ const RoomPage = () => {
   }, [id]);
 
   return (
-    <div>
-      <p>Room: {id}</p>
-      <ul>
-        {messages.map((message) => (
-          <li key={message._id}>
-            <p>{message.content}</p>
-            <small>from: {message.user.name}</small>
-          </li>
-        ))}
-      </ul>
-      <form onSubmit={handleSubmission}>
-        <input type="text" onChange={handleContentChange} value={content} />
-        <button>Send</button>
+    <div className="room">
+      <div className="header">
+        <Link to="/">
+          <button className="back">Back</button>
+        </Link>
+
+        <Link to="/">
+          <button className="settings">Settings</button>
+        </Link>
+
+        <h1>{id}</h1>
+      </div>
+      <div className="chat">
+        <ul>
+          {messages.map((message) => (
+            <li key={message._id}>
+              <p>{message.content}</p>
+              <small>from: {message.user.name}</small>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <form className="message" onSubmit={handleSubmission}>
+        <button>
+          <img className="send" src="/images/send.svg" alt="send message" />
+        </button>
+        <input
+          type="text"
+          placeholder="Message here..."
+          onChange={handleContentChange}
+          value={content}
+        />
       </form>
     </div>
   );
