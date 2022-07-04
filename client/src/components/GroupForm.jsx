@@ -3,7 +3,6 @@ const GroupForm = ({ group, onGroupChange, onGroupSubmit, buttonLabel }) => {
     event.preventDefault();
     onGroupSubmit();
   };
-
   return (
     <form onSubmit={handleGroupFormSubmission}>
       <label htmlFor="input-listed">
@@ -35,6 +34,9 @@ const GroupForm = ({ group, onGroupChange, onGroupSubmit, buttonLabel }) => {
           }
         />
       </div>
+      <label htmlFor="input-listed">
+        <p>Members:</p>
+      </label>
 
       <button className="-green">{buttonLabel}</button>
     </form>

@@ -46,7 +46,7 @@ const RoomPage = () => {
 
   return (
     <div>
-      <h1>Room: {id}</h1>
+      <p>Room: {id}</p>
       <ul>
         {messages.map((message) => (
           <li key={message._id}>
