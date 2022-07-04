@@ -21,6 +21,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   max-width: 400px;
   height: 100%;
+  height: -webkit-fill-available;
   // border: solid 1px gray;
 }
 
@@ -228,6 +229,7 @@ button {
 
   .chat {
     height: $heigth-chat;
+    height: -webkit-fill-available;
     overflow: auto;
     display: flex;
     flex-direction: column-reverse;
