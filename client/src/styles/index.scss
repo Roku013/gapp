@@ -229,7 +229,7 @@ button {
 
   .chat {
     height: $heigth-chat;
-    height: -webkit-fill-available;
+    // height: -webkit-fill-available;
     overflow: auto;
     display: flex;
     flex-direction: column-reverse;
