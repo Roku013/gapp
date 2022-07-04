@@ -24,14 +24,16 @@ const GroupPage = () => {
       {user && (
         <div>
           <Link to={`/profile/${user._id}`}>Back</Link>
-          <p>
-            <Link to="/add">CREATE NEW GROUP</Link>
-          </p>
+
+          <Link to="/add">
+            <p>CREATE NEW GROUP</p>
+          </Link>
+
           <h1>Groups</h1>
           {groups.map((group) => (
-            <p key={group._id}>
+            <div key={group._id}>
               <GroupCard group={group} />
-            </p>
+            </div>
           ))}
         </div>
       )}

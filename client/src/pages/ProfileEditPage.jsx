@@ -8,6 +8,8 @@ const ProfileEditPage = () => {
   // const [setProfile] = useState('');
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [picture, setPicture] = useState("");
+
   const navigate = useNavigate();
 
   const { user } = useContext(AuthenticationContext);

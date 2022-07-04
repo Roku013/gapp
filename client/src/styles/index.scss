@@ -1,8 +1,12 @@
+$heigth-header: 70px;
+$heigth-input: 66px;
+// $heigth-chat: calc((100% - $heigth-header) - $heigth-input);
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
-  font-family: 'Roboto', monospace;
+  font-family: "Roboto", monospace;
 }
 
 html {
@@ -11,14 +15,13 @@ html {
 
 body {
   margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   max-width: 400px;
-  height: 844px;
-  border: solid 1px gray;
+  height: 100%;
+  // border: solid 1px gray;
 }
 
 a:hover,
@@ -30,7 +33,7 @@ a:active {
 
 h1 {
   text-align: center;
-  font-family: 'Roboto', monospace;
+  font-family: "Roboto", monospace;
 }
 
 p {
@@ -107,7 +110,6 @@ button {
   }
 }
 
-<<<<<<< HEAD
 .sign-out {
   border: none;
   background: none;
@@ -160,6 +162,7 @@ button {
 }
 .user-info {
   margin-top: 10px;
+
 =======
 // .sign-out {
 //   border: none;
@@ -172,6 +175,9 @@ button {
 //   cursor: pointer;
 // }
 >>>>>>> ce5a06f5107958360c86c2964dc3bd034c8ccd4e
+
+=======
+>>>>>>> 86f6edf5670d8c7a293bbe0fd2c4c4407d2e724b
 
 .profile-page {
   .header {
@@ -230,12 +236,11 @@ button {
   }
 }
 .room {
-  height: 844px;
   position: relative;
 
   .header {
     width: 100%;
-    height: 70px;
+    height: $heigth-header;
     padding-top: 16px;
     background-color: white;
     position: relative;
@@ -279,7 +284,7 @@ button {
   }
 
   .chat {
-    height: 700px;
+    // height: $heigth-chat;
     overflow: auto;
     display: flex;
     flex-direction: column-reverse;
@@ -287,9 +292,11 @@ button {
 
   .message {
     bottom: 0;
-    position: relative;
+    position: sticky;
     width: 340px;
     margin: 0 auto;
+    height: $heigth-input;
+    background: white;
 
     input {
       width: 340px;
