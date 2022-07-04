@@ -16,6 +16,7 @@ import SingleGroupPage from './pages/SingleGroupPage';
 import GroupAddPage from './pages/GroupAddPage';
 import GroupEditPage from './pages/GroupEditPage';
 import GroupProfilePage from './pages/GroupProfilePage';
+import GroupAddMemberPage from './pages/GroupAddMembersPage';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -37,6 +38,10 @@ const App = () => {
 
           <Route path="/group" element={<GroupPage />} />
           <Route path="/group/profile/:id" element={<GroupProfilePage />} />
+          <Route
+            path="/group/:id/member/add"
+            element={<GroupAddMemberPage />}
+          />
           <Route path="/group/edit/:id" element={<GroupEditPage />} />
           <Route path="/add" element={<GroupAddPage />} />
           <Route path="/group/:id" element={<SingleGroupPage />} />
