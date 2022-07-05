@@ -1,60 +1,54 @@
-import { useContext } from 'react';
-import { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import AuthenticationContext from '../context/authentication';
-import { profileEdit } from '../services/profile';
-import { useNavigate, Link } from 'react-router-dom';
+import AuthenticationForm from '../components/AuthenticationForm';
+import { profileEdit, profileLoad } from '../services/profile';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileEditPage = () => {
-  // const [setProfile] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const { id } = useParams();
+  const [profile, setProfile] = useState(null);
+
   const navigate = useNavigate();
 
-  const { user } = useContext(AuthenticationContext);
-  // useEffect(() => {
-  //   if (user) {
-  //     profileLoad(user._id).then((data) => setProfile(data.profile));
-  //   }
-  // });
+  const { user, setUser } = useContext(AuthenticationContext);
 
-  const handleEditProfile = () => {
+  useEffect(() => {
+    if (user) {
+      profileLoad(user._id).then((data) => setProfile(data.profile));
+    }
+  }, [user]);
+
+  const handleProfileEdit = () => {
     let id = user._id;
-    let userEdit = { name, email };
-    profileEdit(id, userEdit).then(() => {
-      //setUser(data.profile);
-      return;
+    console.log(id);
+    profileEdit(id, profile).then((data) => {
+      setUser(data.profile);
+      navigate(`/profile/${id}`);
     });
-    navigate(`/profile/${id}`);
   };
 
   return (
     <div>
-      <div className="header-profile-edit">
-        <Link to={`/profile/${user._id}`}>
+      {/* <div className="header-profile-edit">
+        <Link to={`/profile/${id}`}>
           <button className="back">Back</button>
         </Link>
 
         <h1>Edit Profile</h1>
-      </div>
+      </div> */}
 
-      <form onSubmit={handleEditProfile}>
-        <input
-          id="input-name"
-          placeholder="New name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
+      <h1>Edit Profile</h1>
+      {profile && (
+        <AuthenticationForm
+          user={profile}
+          buttonLabel="Edit Profile"
+          displayInputs={['name', 'email', 'picture']}
+          onUserChange={setProfile}
+          onAuthenticationSubmit={handleProfileEdit}
         />
+      )}
 
-        <input
-          id="input-email"
-          type="email"
-          placeholder="New email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-
-        <button className="-green">Update</button>
-      </form>
       <div className="navigation-bottom">
         <div className="circle">
           <Link to="/group">
@@ -67,7 +61,7 @@ const ProfileEditPage = () => {
           <Link to="/group">
             <img className="events-icon" src="/images/event.svg" alt="Events" />
           </Link>
-          <Link className="active" to={`/profile/${user._id}`}>
+          <Link className="active" to={`/profile/${id}`}>
             <img
               className="profile-icon"
               src="/images/profile.svg"
