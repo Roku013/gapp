@@ -90,7 +90,7 @@ const ProfileEditPage = () => {
 
   return (
     <div>
-      <h1>Profile Edit</h1>
+      <h1>Edit Profile</h1>
       {profile && (
         <AuthenticationForm
           user={profile}

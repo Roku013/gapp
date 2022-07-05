@@ -52,17 +52,19 @@ const ProfilePage = () => {
             alt={profile.name}
           />
           <h1>{profile.name}</h1>
-          <p>
-            <Link to='/group'>Group List</Link>
-          </p>
         </div>
       )}
 
-      <div className='group-list slide'>
-        <h2>Groups</h2>
+      <div className='group-list-slide'>
+        <p>
+          <Link to='/group'>Groups</Link>
+        </p>
       </div>
-      <div>
-        <h2 className='event-list slide'>Events</h2>
+
+      <div className='event-list-slide'>
+        <p>
+          <Link to='/group'>Events</Link>
+        </p>
       </div>
     </div>
   );

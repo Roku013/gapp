@@ -77,7 +77,7 @@ const AuthenticationForm = (props) => {
         </>
       )} */}
 
-      <button>{props.buttonLabel}</button>
+      <button className='-green'>{props.buttonLabel}</button>
     </form>
   );
 };
