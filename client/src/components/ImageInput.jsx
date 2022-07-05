@@ -1,4 +1,4 @@
-import { IKContext, IKUpload } from "imagekitio-react";
+import { IKContext, IKUpload } from 'imagekitio-react';
 
 const ImageInput = (props) => {
   const handleSuccess = (result) => {
@@ -6,15 +6,14 @@ const ImageInput = (props) => {
     props.onImageChange(url);
   };
 
-  const handleError = (error) => {
-    console.log(error);
-    props.onImageChange("");
+  const handleError = () => {
+    props.onImageChange('');
   };
 
   return (
-    <>
+    <div>
       {props.image && (
-        <img style={{ maxWidth: "20em" }} src={props.image} alt='Selected' />
+        <img style={{ maxWidth: '20em' }} src={props.image} alt="Selected" />
       )}
       <IKContext
         publicKey={process.env.REACT_APP_IMAGEKIT_PUBLIC_API_KEY}
@@ -24,7 +23,7 @@ const ImageInput = (props) => {
       >
         <IKUpload onSuccess={handleSuccess} onError={handleError} />
       </IKContext>
-    </>
+    </div>
   );
 };
 
