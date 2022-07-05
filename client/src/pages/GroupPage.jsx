@@ -15,26 +15,50 @@ const GroupPage = () => {
   }, []);
 
   const { user } = useContext(AuthenticationContext);
-  // console.log(user);
 
   return (
-    <div>
+    <div className="group-page">
       {!user && <p>log in to see the list of groups</p>}
-
       {user && (
-        <div>
-          <Link to={`/profile/${user._id}`}>Back</Link>
-          <p>
-            <Link to="/add">CREATE NEW GROUP</Link>
-          </p>
-          <h1>Groups</h1>
+        <div className="group-info">
+          <Link className="return-btn" to={`/profile/${user.id}`}>
+            BACK
+          </Link>
+
+          <Link to="/add">
+            <p className="create-group">+</p>
+          </Link>
+
+          <h1 className="group-topic">Groups</h1>
+
           {groups.map((group) => (
-            <p key={group._id}>
+            <div className="group-name" key={group._id}>
               <GroupCard group={group} />
-            </p>
+            </div>
           ))}
         </div>
       )}
+      <div className="navigation-bottom">
+        <div className="circle">
+          <Link className="active" to="/group">
+            <img
+              className="groups-icon"
+              src="/images/groups.svg"
+              alt="Groups"
+            />
+          </Link>
+          <Link to="/group">
+            <img className="events-icon" src="/images/event.svg" alt="Events" />
+          </Link>
+          <Link to={`/profile/${user._id}`}>
+            <img
+              className="profile-icon"
+              src="/images/profile.svg"
+              alt="Profile"
+            />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

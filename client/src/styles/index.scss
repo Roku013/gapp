@@ -1,3 +1,7 @@
+$heigth-header: 70px;
+$heigth-input: 66px;
+// $heigth-chat: calc((100% - $heigth-header) - $heigth-input);
+
 *,
 *:before,
 *:after {
@@ -11,14 +15,13 @@ html {
 
 body {
   margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   max-width: 400px;
-  height: 844px;
-  border: solid 1px gray;
+  height: 100%;
+  // border: solid 1px gray;
 }
 
 a:hover,
@@ -110,6 +113,59 @@ button {
 // .sign-out {
 //   border: none;
 //   background: none;
+//   color: #ffffff;
+//   margin-right: 20px;
+//   position: relative;
+//   left: -50px;
+//   top: 2px;
+//   cursor: pointer;
+// }
+// .user-options {
+//   display: flex;
+//   text-align: center;
+//   flex-direction: row;
+//   padding: 70px;
+//   justify-content: space-between;
+//   align-items: center;
+//   background-color: #5db075;
+//   color: #e8e8e8;
+// }
+// .profile-name {
+//   position: relative;
+//   left: 25px;
+//   top: 2px;
+//   color: white;
+// }
+// .profile-info {
+//   align-items: center;
+//   margin-top: 100px;
+// }
+// .settings-profile {
+//   border: none;
+//   cursor: pointer;
+//   background: none;
+//   margin-left: -60px;
+//   color: white;
+//   position: relative;
+//   left: -20px;
+//   top: 2px;
+// }
+// .profile-img {
+//   object-fit: cover;
+//   width: 200px;
+//   height: 200px;
+//   border-radius: 50%;
+//   border-style: solid;
+//   border-color: #e9d3d9;
+//   display: cover;
+//   box-shadow: 0 0 3px 3px white;
+// }
+// .user-info {
+//   margin-top: 10px;
+// }
+// .sign-out {
+//   border: none;
+//   background: none;
 //   color: #e8e8e8;
 //   margin-right: 80px;
 //   position: relative;
@@ -125,40 +181,40 @@ button {
     padding-top: 16px;
     background-color: #5db075;
     position: relative;
-
-    button {
-      background: none;
-      color: inherit;
-      border: none;
-      padding: 0;
-      font: inherit;
-      cursor: pointer;
-      outline: inherit;
-      width: auto;
-      height: auto;
-      position: absolute;
-      font-size: 16px;
-      font-weight: 500;
-    }
-
-    h1 {
-      margin: 0;
-      color: white;
-      font-weight: 600;
-      font-size: 30px;
-    }
-
-    .settings {
-      margin: 10px;
-      color: white;
-    }
-
-    .sign-out {
-      right: 0px;
-      margin: 10px;
-      color: white;
-    }
   }
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width: auto;
+    height: auto;
+    position: absolute;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  h1 {
+    margin: 0;
+    color: white;
+    font-weight: 600;
+    font-size: 30px;
+  }
+
+  .settings {
+    margin: 10px;
+    color: white;
+  }
+
+  .sign-out {
+    right: 0px;
+    margin: 10px;
+    color: white;
+  }
+
   .user-info {
     top: -130px;
     position: relative;
@@ -175,12 +231,11 @@ button {
   }
 }
 .room {
-  height: 844px;
   position: relative;
 
   .header {
     width: 100%;
-    height: 70px;
+    height: $heigth-header;
     padding-top: 16px;
     background-color: white;
     position: relative;
@@ -224,7 +279,7 @@ button {
   }
 
   .chat {
-    height: 700px;
+    // height: $heigth-chat;
     overflow: auto;
     display: flex;
     flex-direction: column-reverse;
@@ -232,9 +287,11 @@ button {
 
   .message {
     bottom: 0;
-    position: relative;
+    position: sticky;
     width: 340px;
     margin: 0 auto;
+    height: $heigth-input;
+    background: white;
 
     input {
       width: 340px;
@@ -256,5 +313,175 @@ button {
       right: 0;
       padding: 8px;
     }
+  }
+}
+
+// Hey Sandy fix this:
+
+// .edit-form {
+//   padding: 3em;
+//   align-items: center;
+//   justify-content: center;
+//   display: inline;
+// }
+// .edit-btn {
+//   cursor: pointer;
+//   margin-top: 5em;
+// }
+// #input-name {
+//   margin-top: 2em;
+// }
+// #input-email {
+//   margin-top: 2em;
+// }
+// #input-picture {
+//   margin-top: 2em;
+// }
+// .event-list {
+//   display: flex;
+//   float: right;
+//   margin-right: 1em;
+// }
+// .group-list {
+//   display: flex;
+//   float: left;
+//   margin-left: 1em;
+// }
+// .create-group {
+//   right: 0px;
+//   margin: 0;
+//   display: flex;
+//   float: right;
+//   color: #5db075;
+//   font-size: 2em;
+// }
+
+// .return-btn {
+//   margin-top: 1.5em;
+//   color: #5db075;
+//   margin-left: 1.5em;
+//   font-weight: 600;
+// }
+
+// .group-name {
+//   padding: 0.5em;
+//   display: flex;
+//   justify-content: center;
+// }
+// .group-page {
+//   padding: 1em;
+//   align-items: center;
+//   justify-content: center;
+//   display: inline;
+// }
+// .group-card {
+//   padding: 0.5em;
+//   align-items: center;
+//   justify-content: center;
+//   display: inline;
+// }
+// .group-btn {
+//   border: none;
+//   margin-right: 80px;
+// }
+// .group-card-name {
+//   font-size: 1.4em;
+//   background: none;
+//   display: flex;
+//   color: #080808;
+// }
+// .group-info {
+//   margin-top: 1.5em;
+// }
+// .group-topic {
+//   margin-top: 1em;
+//   justify-content: center;
+//   margin-left: 1em;
+// }
+// .grp-description {
+//   display: flex;
+//   margin-top: -0.2em;
+//   margin-left: 2em;
+// }
+// .event-list-slide {
+//   display: flex;
+//   float: right;
+//   margin-right: 3em;
+// }
+// .group-list-slide {
+//   display: flex;
+//   float: left;
+//   margin-left: 3em;
+// }
+
+// till here
+
+.navigation-bottom {
+  position: fixed;
+  height: 80px;
+  width: 400px;
+  bottom: 0;
+  background-color: #fafafa;
+  border-top: solid 1px #e5e5e5;
+
+  .circle {
+    display: flex;
+    justify-content: space-evenly;
+
+    img {
+      padding: 6px;
+    }
+
+    :link {
+      background-color: #e5e5e5;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      margin-top: 10px;
+    }
+
+    .active {
+      background-color: #5db075;
+      border-radius: 50%;
+    }
+  }
+}
+
+.header-profile-edit {
+  width: 100%;
+  height: $heigth-header;
+  padding-top: 16px;
+  background-color: white;
+  position: relative;
+
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width: auto;
+    height: auto;
+    position: absolute;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  h1 {
+    width: 200px;
+    margin: 0 auto;
+    color: black;
+    font-weight: 600;
+    font-size: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .back {
+    margin: 10px;
+    color: #5db075;
   }
 }

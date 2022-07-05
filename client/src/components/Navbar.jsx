@@ -1,34 +1,26 @@
-import { useContext } from 'react';
+// import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
-import AuthenticationContext from '../context/authentication';
-import { signOutUser } from './../services/authentication';
 
 const Navbar = () => {
-  const { user, setUser } = useContext(AuthenticationContext);
-
-  const handleSignOut = () => {
-    signOutUser().then(() => {
-      setUser(null);
-    });
-  };
-
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      {(user && (
-        <>
-          <span>Welcome {user.name}</span>
-          <button onClick={handleSignOut}>Sign Out</button>
-          <Link to="/room/abc">Room ABC</Link>
-        </>
-      )) || (
-        <>
-          <Link to="/log-in">Log In</Link>
-          <Link to="/register">Register</Link>
-        </>
-      )}
-    </nav>
+    <div className="navigation-bottom">
+      <div className="circle">
+        <Link to="/group">
+          <img className="groups-icon" src="/images/groups.svg" alt="Groups" />
+        </Link>
+        <Link to="/group">
+          <img className="events-icon" src="/images/event.svg" alt="Events" />
+        </Link>
+        <Link className="active" to="/group">
+          <img
+            className="profile-icon"
+            src="/images/profile.svg"
+            alt="Profile"
+          />
+        </Link>
+      </div>
+    </div>
   );
 };
 

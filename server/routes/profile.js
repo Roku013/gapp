@@ -20,14 +20,14 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.patch('/:id', routeGuard, (req, res, next) => {
-  console.log('hello');
   const { id } = req.params;
   const { name, email, picture } = req.body;
-  console.log('name, email ' + name + email);
+
+  console.log('name, email, picture ' + name + email + picture);
+
   User.findByIdAndUpdate(id, { name, email, picture }, { new: true })
     .then((user) => {
-      console.log(user);
-      res.json({ user });
+      res.json({ profile: user });
     })
     .catch((error) => {
       next(error);

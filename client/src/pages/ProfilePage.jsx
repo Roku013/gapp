@@ -2,13 +2,11 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { profileLoad } from '../services/profile';
 import { signOutUser } from '../services/authentication';
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthenticationContext from '../context/authentication';
 
 const ProfilePage = () => {
   const { id } = useParams();
   const [profile, setProfile] = useState(null);
-
   useEffect(() => {
     profileLoad(id).then((data) => {
       setProfile(data.profile);
@@ -37,7 +35,6 @@ const ProfilePage = () => {
             Settings
           </button>
         )}
-
         <form onSubmit={handleSignout}>
           <button className="sign-out">Logout</button>
         </form>
@@ -54,11 +51,41 @@ const ProfilePage = () => {
             alt={profile.name}
           />
           <h1>{profile.name}</h1>
-          <p>
-            <Link to="/group">Group List</Link>
-          </p>
         </div>
       )}
+
+      <div className="group-list-slide">
+        <p>
+          <Link to="/group">Groups</Link>
+        </p>
+      </div>
+
+      <div className="event-list-slide">
+        <p>
+          <Link to="/group">Events</Link>
+        </p>
+      </div>
+      <div className="navigation-bottom">
+        <div className="circle">
+          <Link to="/group">
+            <img
+              className="groups-icon"
+              src="/images/groups.svg"
+              alt="Groups"
+            />
+          </Link>
+          <Link to="/group">
+            <img className="events-icon" src="/images/event.svg" alt="Events" />
+          </Link>
+          <Link className="active" to={`/profile/${id}`}>
+            <img
+              className="profile-icon"
+              src="/images/profile.svg"
+              alt="Profile"
+            />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

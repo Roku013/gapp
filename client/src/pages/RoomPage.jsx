@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import { loadRoom } from '../services/room';
 import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import AuthenticationContext from '../context/authentication';
 
 const RoomPage = () => {
   const [socket, setSocket] = useState(null);
@@ -49,20 +51,28 @@ const RoomPage = () => {
     };
   }, [id]);
 
+  const { user } = useContext(AuthenticationContext);
+
+  let innerHeight = window.innerHeight;
+
   return (
     <div className="room">
       <div className="header">
-        <Link to="/">
-          <button className="back">Back</button>
-        </Link>
+        {user && (
+          <Link to={`/group/`}>
+            <button className="back">Back</button>
+          </Link>
+        )}
 
-        <Link to="/">
-          <button className="settings">Settings</button>
-        </Link>
+        {user && (
+          <Link to={`/group/profile/${id}`}>
+            <button className="settings">Settings</button>
+          </Link>
+        )}
 
         {group && <h1>{group.name}</h1>}
       </div>
-      <div className="chat">
+      <div className="chat" style={{ height: innerHeight - 136 }}>
         <ul>
           {messages.map((message) => (
             <li key={message._id}>
