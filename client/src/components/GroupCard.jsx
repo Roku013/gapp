@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const GroupCard = ({ group }) => (
-  <div className='group-card'>
+  <div>
     <Link to={`/group/${group._id}`}>
-      <button className='-green group-card-name'>{group.name} </button>
+      <button>{group.name} </button>
     </Link>
-    <p className='grp-description'>{group.description}</p>
+    <p className="grp-description">{group.description}</p>
   </div>
 );
 

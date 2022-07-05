@@ -21,7 +21,7 @@ const GroupPage = () => {
       {!user && <p>log in to see the list of groups</p>}
       {user && (
         <div className="group-info">
-          <Link className="return-btn" to={`/profile/${user.id}`}>
+          <Link className="return-btn" to={`/profile/${user._id}`}>
             BACK
           </Link>
 
@@ -50,13 +50,15 @@ const GroupPage = () => {
           <Link to="/group">
             <img className="events-icon" src="/images/event.svg" alt="Events" />
           </Link>
-          <Link to={`/profile/${user._id}`}>
-            <img
-              className="profile-icon"
-              src="/images/profile.svg"
-              alt="Profile"
-            />
-          </Link>
+          {user && (
+            <Link to={`/profile/${user._id}`}>
+              <img
+                className="profile-icon"
+                src="/images/profile.svg"
+                alt="Profile"
+              />
+            </Link>
+          )}
         </div>
       </div>
     </div>
