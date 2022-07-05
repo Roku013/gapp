@@ -34,21 +34,47 @@ router.post('/add', routeGuard, (req, res, next) => {
     .catch((error) => next(error));
 });
 
-// add group member
-/*
-router.post('/:id/member/add', (req, res, next) => {
-  const userId = User._id;
-  console.log('userID: ' + userId);
+router.get('/:id/member/search', (req, res, next) => {
+  const { name } = req.query;
+  const groupId = req.params.id;
 
-  User.findById(userId).then((user) => {
-    Group.findByIdAndUpdate(req.group.id, { $push: { members: user._id } })
-      .then(() => {
-        console.log('member is added to the group');
-        res.redirect(`/group`);
-      })
-      .catch((err) => next(err));
-  });
-});*/
+  Group.findById(groupId)
+    .then((group) => {
+      const memberIds = group.members;
+      return User.find({
+        _id: { $nin: memberIds },
+        name: { $regex: new RegExp(name, 'i') }
+      });
+    })
+    .then((users) => {
+      res.json({ users });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+// add group member
+router.post('/:id/member/add', (req, res, next) => {
+  const groupId = req.params.id;
+  const newMemberId = req.body.member;
+
+  Group.findById(groupId)
+    .then((group) => {
+      let isGroupMember = group.members
+        .map((memberId) => String(memberId))
+        .includes(newMemberId);
+      if (!isGroupMember) {
+        return Group.findByIdAndUpdate(groupId, {
+          $push: { members: newMemberId }
+        });
+      }
+    })
+    .then(() => {
+      res.json({});
+    })
+    .catch((err) => next(err));
+});
 
 // remove group
 router.delete('/:id', (req, res, next) => {
@@ -87,7 +113,7 @@ router.patch('/:id', routeGuard, (req, res, next) => {
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   Group.findById(id)
-    .populate('creator')
+    .populate('creator members')
     .then((group) => {
       res.json({ group });
     })

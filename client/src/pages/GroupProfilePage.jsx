@@ -27,7 +27,9 @@ const GroupProfilePage = (req) => {
           <p>name: {group.name}</p>
           <p>creator: {group.creator.name}</p>
           <p>description: {group.description}</p>
-          <p>members: {group.members}</p>
+          <p>
+            members: {group.members.map((member) => member.name).join(', ')}
+          </p>
 
           {group.creator._id === user._id && (
             <div>

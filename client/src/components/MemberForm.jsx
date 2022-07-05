@@ -1,12 +1,7 @@
-const MemberForm = ({
-  member,
-  onMemberChange,
-  onMemberSubmit,
-  buttonLabel
-}) => {
+const MemberForm = ({ name, onSearchQueryChange, onSearchSubmit }) => {
   const handleMemberFormSubmission = (event) => {
     event.preventDefault();
-    onMemberSubmit();
+    onSearchSubmit();
   };
   return (
     <form onSubmit={handleMemberFormSubmission}>
@@ -18,14 +13,12 @@ const MemberForm = ({
           id="input-listed"
           type="text"
           placeholder="Add member name"
-          value={member.name}
-          onChange={(event) =>
-            onMemberChange({ ...member, name: event.target.value })
-          }
+          value={name}
+          onChange={(event) => onSearchQueryChange(event.target.value)}
         />
       </div>
 
-      <button className="-green">{buttonLabel}</button>
+      <button className="-green">Search</button>
     </form>
   );
 };

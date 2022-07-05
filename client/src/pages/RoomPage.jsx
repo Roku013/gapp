@@ -9,6 +9,7 @@ const RoomPage = () => {
   const [socket, setSocket] = useState(null);
   const [content, setContent] = useState('');
   const [messages, setMessages] = useState([]);
+  const [group, setGroup] = useState(null);
   const { id } = useParams();
 
   const handleReceivedMessage = (data) => {
@@ -33,6 +34,7 @@ const RoomPage = () => {
       // console.log(data.user.name);
       console.log(data.messages);
       setMessages(data.messages);
+      setGroup(data.group);
     });
 
     // Listen for new messages
@@ -58,7 +60,7 @@ const RoomPage = () => {
           <button className="settings">Settings</button>
         </Link>
 
-        <h1>{id}</h1>
+        {group && <h1>{group.name}</h1>}
       </div>
       <div className="chat">
         <ul>
