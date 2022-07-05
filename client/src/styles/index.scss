@@ -409,4 +409,35 @@ button {
   display: flex;
   float: left;
   margin-left: 3em;
+
+  .navigation-bottom {
+    position: fixed;
+    height: 80px;
+    width: 400px;
+    bottom: 0;
+    background-color: #fafafa;
+    border-top: solid 1px #e5e5e5;
+
+    .circle {
+      display: flex;
+      justify-content: space-evenly;
+
+      img {
+        padding: 6px;
+      }
+
+      :link {
+        background-color: #e5e5e5;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin-top: 10px;
+      }
+
+      .active {
+        background-color: #5db075;
+        border-radius: 50%;
+      }
+    }
+  }
 }
