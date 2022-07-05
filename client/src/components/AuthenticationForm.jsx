@@ -1,4 +1,4 @@
-//import ImageInput from "./imageInput";
+import ImageInput from "./ImageInput";
 
 const AuthenticationForm = (props) => {
   const handleSubmission = (event) => {
@@ -40,32 +40,32 @@ const AuthenticationForm = (props) => {
 
       {props.displayInputs.includes("picture") && (
         <>
-          <label htmlFor='input-picture'>Picture</label>
+          {/* <label htmlFor="input-picture">Picture</label>
           <input
-            id='input-picture'
-            type='file'
-            placeholder='Picture'
+            id="input-picture"
+            type="text"
+            placeholder="Picture"
             value={props.user.picture}
             onChange={(event) =>
               props.onUserChange({ ...props.user, picture: event.target.value })
             }
-          />
-          {/* <ImageInput
+          /> */}
+          <ImageInput
             image={props.user.picture}
             onImageChange={(picture) =>
               props.onUserChange({ ...props.user, picture })
             }
-          /> */}
+          />
         </>
       )}
 
-      {/* {props.displayInputs.includes("password") && (
+      {/* {props.displayInputs.includes('password') && (
         <>
-          <label htmlFor='input-password'>Password</label>
+          <label htmlFor="input-password">Password</label>
           <input
-            id='input-password'
-            type='password'
-            placeholder='Password'
+            id="input-password"
+            type="password"
+            placeholder="Password"
             value={props.user.password}
             onChange={(event) =>
               props.onUserChange({
@@ -77,7 +77,7 @@ const AuthenticationForm = (props) => {
         </>
       )} */}
 
-      <button className='-green'>{props.buttonLabel}</button>
+      <button>{props.buttonLabel}</button>
     </form>
   );
 };

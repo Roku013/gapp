@@ -162,8 +162,7 @@ button {
 }
 .user-info {
   margin-top: 10px;
-
-=======
+}
 // .sign-out {
 //   border: none;
 //   background: none;
@@ -174,10 +173,6 @@ button {
 //   top: 2px;
 //   cursor: pointer;
 // }
->>>>>>> ce5a06f5107958360c86c2964dc3bd034c8ccd4e
-
-=======
->>>>>>> 86f6edf5670d8c7a293bbe0fd2c4c4407d2e724b
 
 .profile-page {
   .header {
@@ -186,40 +181,40 @@ button {
     padding-top: 16px;
     background-color: #5db075;
     position: relative;
-
-    button {
-      background: none;
-      color: inherit;
-      border: none;
-      padding: 0;
-      font: inherit;
-      cursor: pointer;
-      outline: inherit;
-      width: auto;
-      height: auto;
-      position: absolute;
-      font-size: 16px;
-      font-weight: 500;
-    }
-
-    h1 {
-      margin: 0;
-      color: white;
-      font-weight: 600;
-      font-size: 30px;
-    }
-
-    .settings {
-      margin: 10px;
-      color: white;
-    }
-
-    .sign-out {
-      right: 0px;
-      margin: 10px;
-      color: white;
-    }
   }
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width: auto;
+    height: auto;
+    position: absolute;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  h1 {
+    margin: 0;
+    color: white;
+    font-weight: 600;
+    font-size: 30px;
+  }
+
+  .settings {
+    margin: 10px;
+    color: white;
+  }
+
+  .sign-out {
+    right: 0px;
+    margin: 10px;
+    color: white;
+  }
+
   .user-info {
     top: -130px;
     position: relative;

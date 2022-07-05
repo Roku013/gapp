@@ -8,12 +8,11 @@ import AuthenticationContext from "../context/authentication";
 const ProfilePage = () => {
   const { id } = useParams();
   const [profile, setProfile] = useState(null);
-
   useEffect(() => {
     profileLoad(id).then((data) => {
       setProfile(data.profile);
     });
-  }, [id]);
+  }, []);
 
   const { user } = useContext(AuthenticationContext);
   const navigate = useNavigate();
