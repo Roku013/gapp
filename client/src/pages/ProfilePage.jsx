@@ -4,6 +4,7 @@ import { profileLoad } from '../services/profile';
 import { signOutUser } from '../services/authentication';
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthenticationContext from '../context/authentication';
+// import Navbar from '../components/Navbar';
 
 const ProfilePage = () => {
   const { id } = useParams();
@@ -71,7 +72,7 @@ const ProfilePage = () => {
           <Link to="/group">
             <img className="events-icon" src="/images/event.svg" alt="Events" />
           </Link>
-          <Link className="active" to="/group">
+          <Link className="active" to={`/profile/${user._id}`}>
             <img
               className="profile-icon"
               src="/images/profile.svg"

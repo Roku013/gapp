@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import AuthenticationContext from '../context/authentication';
 import { profileEdit } from '../services/profile';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const ProfileEditPage = () => {
   // const [setProfile] = useState('');
@@ -29,10 +29,18 @@ const ProfileEditPage = () => {
 
   return (
     <div>
+      <div className="header-profile-edit">
+        <Link to={`/profile/${user._id}`}>
+          <button className="back">Back</button>
+        </Link>
+
+        <h1>Edit Profile</h1>
+      </div>
+
       <form onSubmit={handleEditProfile}>
         <input
           id="input-name"
-          placeholder="Name"
+          placeholder="New name"
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
@@ -40,13 +48,34 @@ const ProfileEditPage = () => {
         <input
           id="input-email"
           type="email"
-          placeholder="Email"
+          placeholder="New email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
 
-        <button className="-green">Edit profile</button>
+        <button className="-green">Update</button>
       </form>
+      <div className="navigation-bottom">
+        <div className="circle">
+          <Link to="/group">
+            <img
+              className="groups-icon"
+              src="/images/groups.svg"
+              alt="Groups"
+            />
+          </Link>
+          <Link to="/group">
+            <img className="events-icon" src="/images/event.svg" alt="Events" />
+          </Link>
+          <Link className="active" to={`/profile/${user._id}`}>
+            <img
+              className="profile-icon"
+              src="/images/profile.svg"
+              alt="Profile"
+            />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
