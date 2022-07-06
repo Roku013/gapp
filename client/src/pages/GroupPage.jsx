@@ -17,22 +17,23 @@ const GroupPage = () => {
   const { user } = useContext(AuthenticationContext);
 
   return (
-    <div className="group-page">
+    <div className="groups">
       {!user && <p>log in to see the list of groups</p>}
+
       {user && (
-        <div className="group-info">
-          <Link className="return-btn" to={`/profile/${user._id}`}>
-            BACK
+        <div className="header">
+          <Link to={`/profile/${user._id}`}>
+            <button className="back">Back</button>
           </Link>
 
           <Link to="/add">
-            <p className="create-group">+</p>
+            <button className="create">+</button>
           </Link>
 
-          <h1 className="group-topic">Groups</h1>
+          <h1>Groups</h1>
 
           {groups.map((group) => (
-            <div className="group-name" key={group._id}>
+            <div className="" key={group._id}>
               <GroupCard group={group} />
             </div>
           ))}
