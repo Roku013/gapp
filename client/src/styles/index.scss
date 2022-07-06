@@ -2,6 +2,8 @@ $heigth-header: 70px;
 $heigth-input: 66px;
 // $heigth-chat: calc((100% - $heigth-header) - $heigth-input);
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 *,
 *:before,
 *:after {
@@ -15,8 +17,7 @@ html {
 
 body {
   margin: 0 auto;
-  font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Roboto', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   max-width: 400px;
@@ -109,70 +110,6 @@ button {
     position: absolute;
   }
 }
-
-// .sign-out {
-//   border: none;
-//   background: none;
-//   color: #ffffff;
-//   margin-right: 20px;
-//   position: relative;
-//   left: -50px;
-//   top: 2px;
-//   cursor: pointer;
-// }
-// .user-options {
-//   display: flex;
-//   text-align: center;
-//   flex-direction: row;
-//   padding: 70px;
-//   justify-content: space-between;
-//   align-items: center;
-//   background-color: #5db075;
-//   color: #e8e8e8;
-// }
-// .profile-name {
-//   position: relative;
-//   left: 25px;
-//   top: 2px;
-//   color: white;
-// }
-// .profile-info {
-//   align-items: center;
-//   margin-top: 100px;
-// }
-// .settings-profile {
-//   border: none;
-//   cursor: pointer;
-//   background: none;
-//   margin-left: -60px;
-//   color: white;
-//   position: relative;
-//   left: -20px;
-//   top: 2px;
-// }
-// .profile-img {
-//   object-fit: cover;
-//   width: 200px;
-//   height: 200px;
-//   border-radius: 50%;
-//   border-style: solid;
-//   border-color: #e9d3d9;
-//   display: cover;
-//   box-shadow: 0 0 3px 3px white;
-// }
-// .user-info {
-//   margin-top: 10px;
-// }
-// .sign-out {
-//   border: none;
-//   background: none;
-//   color: #e8e8e8;
-//   margin-right: 80px;
-//   position: relative;
-//   left: -50px;
-//   top: 2px;
-//   cursor: pointer;
-// }
 
 .profile-page {
   .header {
