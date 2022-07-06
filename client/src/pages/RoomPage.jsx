@@ -76,8 +76,8 @@ const RoomPage = () => {
         <ul>
           {messages.map((message) => (
             <li key={message._id}>
+              <p className="grey">{message.user.name}:</p>
               <p>{message.content}</p>
-              <small>from: {message.user.name}</small>
             </li>
           ))}
         </ul>
