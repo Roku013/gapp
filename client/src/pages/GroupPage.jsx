@@ -32,6 +32,14 @@ const GroupPage = () => {
 
           <h1>Groups</h1>
 
+          <input
+            id="input-listed"
+            type="text"
+            placeholder="Search for group (fix this)"
+            // value={name}
+            // onChange={(event) => onSearchQueryChange(event.target.value)}
+          />
+
           {groups.map((group) => (
             <div className="" key={group._id}>
               <GroupCard group={group} />

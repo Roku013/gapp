@@ -1,11 +1,16 @@
 import { Link } from 'react-router-dom';
 
 const GroupCard = ({ group }) => (
-  <div>
+  <div className="group-card">
     <Link to={`/group/${group._id}`}>
-      <button>{group.name} </button>
+      <div className="image">
+        <img src="/images/backup-image.png" alt="" />
+      </div>
+      <div className="info">
+        <h2>{group.name} </h2>
+        <p>{group.description}</p>
+      </div>
     </Link>
-    <p className="grp-description">{group.description}</p>
   </div>
 );
 
