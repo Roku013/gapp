@@ -97,7 +97,7 @@ router.post('/add', routeGuard, (req, res, next) => {
 router.get('/:id/member/search', (req, res, next) => {
   const { name } = req.query;
   const groupId = req.params.id;
-  console.log(req.query);
+  // console.log(req.query);
 
   Group.findById(groupId)
     .then((group) => {
@@ -162,7 +162,7 @@ router.patch('/:id', routeGuard, (req, res, next) => {
   )
 
     .then((group) => {
-      console.log(group);
+      // console.log(group);
       res.json({ group });
     })
     .catch((error) => {

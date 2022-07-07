@@ -20,7 +20,6 @@ const ProfileEditPage = () => {
 
   const handleProfileEdit = () => {
     let id = user._id;
-    console.log(id);
     profileEdit(id, profile).then((data) => {
       setUser(data.profile);
       navigate(`/profile/${id}`);
@@ -29,15 +28,14 @@ const ProfileEditPage = () => {
 
   return (
     <div>
-      {/* <div className="header-profile-edit">
-        <Link to={`/profile/${id}`}>
+      <div className="header-profile-edit">
+        <Link to={`/profile/${user._id}`}>
           <button className="back">Back</button>
         </Link>
 
         <h1>Edit Profile</h1>
-      </div> */}
+      </div>
 
-      <h1>Edit Profile</h1>
       {profile && (
         <AuthenticationForm
           user={profile}
@@ -57,7 +55,6 @@ const ProfileEditPage = () => {
               alt="Groups"
             />
           </Link>
-
           <Link className="active" to={`/profile/${user._id}`}>
             <img
               className="profile-icon"
