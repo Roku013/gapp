@@ -28,7 +28,7 @@ const GroupPage = () => {
 
   return (
     <div className="groups">
-      {!user && <p>log in to see the list of groups</p>}
+      {!user && <p>Log in to see the list of groups</p>}
       {user && (
         <div className="header">
           <Link to={`/profile/${user._id}`}>
@@ -40,33 +40,6 @@ const GroupPage = () => {
           </Link>
 
           <h1>Groups</h1>
-
-          {/*<input
-            id="input-listed"
-            type="text"
-            placeholder="Search for group (fix this)"
-            // value={name}
-            // onChange={(event) => onSearchQueryChange(event.target.value)}
-          />
-          <ul>
-            {groups.map((group) => (
-              <li key={group._id}>
-                <img src="" alt="" />
-                <span>{group.name}</span>
-              </li>
-            ))}
-          </ul> */}
-
-          {/**{groups.map((group) => (
-            <div className="" key={group._id}>
-              <GroupCard
-                group={group}
-                groupName={groupName}
-                onSearchQueryChange={setGroupName}
-                onSearchSubmit={handleGroupSearch}
-              />
-            </div>
-          ))} */}
         </div>
       )}
       <div>

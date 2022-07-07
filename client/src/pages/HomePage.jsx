@@ -30,10 +30,9 @@ const HomePage = () => {
   };
 
   return (
-    <div>
+    <div className="bg-color">
       <img className="logo" src="/images/logo.png" alt="Gapp logo" />
-      <h1>Log in</h1>
-
+      <h1 className="white-txt">Log in</h1>
       {/* login form */}
       <form onSubmit={handleLogIn}>
         <input
@@ -59,10 +58,16 @@ const HomePage = () => {
 
         <button className="-green">Log In</button>
       </form>
-
       <p>
-        No account yet? <Link to="/register">Sign up!</Link>
+        No account yet?
+        <Link className="white-txt" to="/register">
+          {' '}
+          Sign up!
+        </Link>
       </p>
+      <div>
+        <img className="home-bg" src="/images/BG6.svg" alt="Gapp logo" />
+      </div>
     </div>
   );
 };
