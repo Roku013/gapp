@@ -484,6 +484,10 @@ button {
 }
 
 .groups {
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
   .header {
     width: 100%;
     height: $heigth-header;
