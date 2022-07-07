@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { groupAdd } from '../services/group';
 import GroupForm from '../components/GroupForm';
 
@@ -19,8 +19,15 @@ const GroupAddPage = () => {
   };
 
   return (
-    <div>
-      <h1>Create New Group</h1>
+    <div className="group-add">
+      <div className="header">
+        <Link to="/group">
+          <button className="back">Back</button>
+        </Link>
+
+        <h1>Compose group</h1>
+      </div>
+      {/* <h1>Create New Group</h1> */}
       <GroupForm
         group={group}
         onGroupChange={setGroup}

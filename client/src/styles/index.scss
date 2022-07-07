@@ -21,6 +21,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   max-width: 400px;
+  width: 100%;
   height: 100%;
   // border: solid 1px gray;
 }
@@ -49,7 +50,7 @@ p {
 }
 
 .password-container {
-  width: 340px;
+  // width: 340px;
   margin: 0 auto;
   position: relative;
 
@@ -70,7 +71,7 @@ p {
 }
 
 input {
-  width: 340px;
+  width: 100%;
   height: 50px;
   border: 1px solid #e8e8e8;
   border-radius: 8px;
@@ -80,15 +81,15 @@ input {
   padding-left: 16px;
   font-size: 16px;
   // color: #bdbdbd;
-  margin-bottom: 16px;
+  margin: 10px;
 }
 
 button {
-  width: 340px;
+  width: 100%;
   height: 50px;
   padding: 16px 32px;
   border: none;
-  margin: 0 auto;
+  margin: 10px;
   display: block;
   font-weight: 600;
   font-size: 16px;
@@ -103,8 +104,8 @@ button {
 
 .sign-up-nav {
   position: relative;
-  width: 340px;
-  margin: 0 auto;
+  // width: 100%;
+  margin: 10px;
 
   .x {
     position: absolute;
@@ -155,6 +156,10 @@ button {
   .user-info {
     top: -130px;
     position: relative;
+
+    h1 {
+      color: black;
+    }
 
     .profile-img {
       object-fit: cover;
@@ -220,6 +225,33 @@ button {
     overflow: auto;
     display: flex;
     flex-direction: column-reverse;
+
+    ul {
+      padding-left: 10px;
+      padding-right: 40px;
+
+      li {
+        list-style-type: none;
+        background-color: #fafafa;
+        border: solid 1px #e8e8e8;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        padding: 10px;
+      }
+
+      p {
+        color: black;
+        text-align: left;
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 400;
+        margin: 0;
+      }
+    }
+
+    .grey {
+      color: #bdbdbd;
+    }
   }
 
   .message {
@@ -249,6 +281,13 @@ button {
       position: absolute;
       right: 0;
       padding: 8px;
+    }
+
+    .send {
+      position: absolute;
+      padding: 0;
+      top: -2px;
+      left: -6px;
     }
   }
 }
@@ -420,5 +459,139 @@ button {
   .back {
     margin: 10px;
     color: #5db075;
+  }
+}
+
+.groups {
+  .header {
+    width: 100%;
+    height: $heigth-header;
+    padding-top: 16px;
+    background-color: white;
+    position: relative;
+
+    button {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+      width: auto;
+      height: auto;
+      position: absolute;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    h1 {
+      width: 200px;
+      margin: 0 auto;
+      color: black;
+      font-weight: 600;
+      font-size: 30px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .back {
+      margin: 10px;
+      color: #5db075;
+    }
+
+    .create {
+      right: 0px;
+      margin: 10px;
+      color: #5db075;
+      font-size: 30px;
+      line-height: 16px;
+      font-weight: 300;
+    }
+  }
+}
+
+.group-add {
+  .header {
+    width: 100%;
+    height: $heigth-header;
+    padding-top: 16px;
+    background-color: white;
+    position: relative;
+
+    button {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+      width: auto;
+      height: auto;
+      position: absolute;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    h1 {
+      // width: 200px;
+      margin: 0 auto;
+      color: black;
+      font-weight: 600;
+      font-size: 30px;
+      // overflow: hidden;
+      // text-overflow: ellipsis;
+      // white-space: nowrap;
+    }
+
+    .back {
+      margin: 10px;
+      color: #5db075;
+    }
+  }
+}
+
+.group-card {
+  a {
+    position: relative;
+    display: flex;
+  }
+
+  .info {
+    border-bottom: solid 1px #e5e5e5;
+    width: 100%;
+    display: grid;
+
+    h2 {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+      color: black;
+      margin-bottom: 0;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: black;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .image {
+    width: 50px;
+    height: 50px;
+    margin: 14px;
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+    }
   }
 }

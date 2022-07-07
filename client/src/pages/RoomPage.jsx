@@ -76,8 +76,8 @@ const RoomPage = () => {
         <ul>
           {messages.map((message) => (
             <li key={message._id}>
+              <p className="grey">{message.user.name}:</p>
               <p>{message.content}</p>
-              <small>from: {message.user.name}</small>
             </li>
           ))}
         </ul>
@@ -87,6 +87,7 @@ const RoomPage = () => {
           <img className="send" src="/images/send.svg" alt="send message" />
         </button>
         <input
+          maxLength={1000}
           type="text"
           placeholder="Message here..."
           onChange={handleContentChange}

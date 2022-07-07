@@ -7,7 +7,7 @@ const routeGuard = require('./../middleware/route-guard');
 
 const router = new express.Router();
 
-//display all groups
+/* //display all groups
 router.get('/', (req, res, next) => {
   let groups;
   Group.find()
@@ -15,13 +15,28 @@ router.get('/', (req, res, next) => {
       res.json({ groups });
     })
     .catch((error) => next(error));
+});*/
+
+// group search
+router.get('/', (req, res, next) => {
+  console.log('dsd');
+  const { groupName } = req.query;
+  Group.find({
+    name: { $regex: new RegExp(groupName, 'i') }
+  })
+    .then((groups) => {
+      res.json({ groups });
+    })
+    .catch((error) => {
+      next(error);
+    });
 });
 
 // group creation
 router.post('/add', routeGuard, (req, res, next) => {
   const { name, description } = req.body;
   const { creator } = req.user._id;
-  console.log(name);
+  // console.log(name);
 
   Group.create({
     name,
@@ -34,9 +49,11 @@ router.post('/add', routeGuard, (req, res, next) => {
     .catch((error) => next(error));
 });
 
+// group member search
 router.get('/:id/member/search', (req, res, next) => {
   const { name } = req.query;
   const groupId = req.params.id;
+  console.log(req.query);
 
   Group.findById(groupId)
     .then((group) => {
