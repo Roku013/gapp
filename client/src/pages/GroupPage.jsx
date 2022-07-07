@@ -18,7 +18,7 @@ const GroupPage = () => {
 
   const handleGroupSearch = () => {
     groupSearch(groupName).then((data) => {
-      console.log(data);
+      // console.log(data);
       setGroups(data.groups);
     });
   };

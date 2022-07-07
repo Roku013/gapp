@@ -27,8 +27,6 @@ const ProfileEditPage = () => {
     });
   };
 
-  console.log('Check this one: ' + id);
-
   return (
     <div>
       <div className="header-profile-edit">
