@@ -20,7 +20,6 @@ const ProfilePage = () => {
   useEffect(() => {
     listGroups(id).then((data) => {
       setGroups(data.groups);
-      console.log(data.groups);
     });
   }, [id]);
 
@@ -55,10 +54,7 @@ const ProfilePage = () => {
         <div className='user-info'>
           <img
             className='profile-img'
-            src={
-              profile.picture ||
-              "https://wilcity.com/wp-content/uploads/2020/06/115-1150152_default-profile-picture-avatar-png-green.jpg"
-            }
+            src={profile.picture || "/images/green default profile picture.jpg"}
             alt={profile.name}
           />
           <h1>{profile.name}</h1>
@@ -83,9 +79,6 @@ const ProfilePage = () => {
               src='/images/groups.svg'
               alt='Groups'
             />
-          </Link>
-          <Link to='/group'>
-            <img className='events-icon' src='/images/event.svg' alt='Events' />
           </Link>
           <Link className='active' to={`/profile/${id}`}>
             <img

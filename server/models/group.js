@@ -21,7 +21,10 @@ const schema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     }
-  ]
+  ],
+  picture: {
+    type: String
+  }
 });
 
 const Group = mongoose.model('Group', schema);
