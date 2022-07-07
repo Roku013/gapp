@@ -17,9 +17,36 @@ router.get('/', (req, res, next) => {
     .catch((error) => next(error));
 });*/
 
+router.get('/', (req, res, next) => {
+  const { groupName } = req.query;
+  Group.find({
+    members: {
+      $in: [req.user._id]
+    }
+  })
+    .then((groups) => {
+      //   let isGroupMember = groups.map((group) =>
+      //     group.members.includes('62c2d905d60634e0fa216058')
+      //   );
+      //   console.log('isGroupMember: ' + isGroupMember);
+      //   if (isGroupMember) {
+      //     return Group.find({
+      //       // _id: { $nin: isGroupMember },
+      //       name: { $regex: new RegExp(groupName, 'i') }
+      //     });
+      //   }
+      // })
+      // .then((groups) => {
+      res.json({ groups });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+/*
 // group search
 router.get('/', (req, res, next) => {
-  console.log('dsd');
   const { groupName } = req.query;
   Group.find({
     name: { $regex: new RegExp(groupName, 'i') }
@@ -31,6 +58,7 @@ router.get('/', (req, res, next) => {
       next(error);
     });
 });
+*/
 
 // group creation
 router.post('/add', routeGuard, (req, res, next) => {
