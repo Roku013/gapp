@@ -1,15 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import MemberForm from '../components/MemberForm';
-import { groupMemberAdd, groupMemberSearch } from '../services/group';
+import {
+  groupLoad,
+  groupMemberAdd,
+  groupMemberSearch
+} from '../services/group';
+import AuthenticationContext from '../context/authentication';
 
-const GroupAddMemberPage = () => {
+const GroupAddMemberPage = (req) => {
+  const { id } = useParams();
   const [name, setName] = useState('');
   const [users, setUsers] = useState([]);
+  const [group, setGroup] = useState(null);
+
+  useEffect(() => {
+    groupLoad(id).then((data) => setGroup(data.group));
+  }, [id]);
 
   const navigate = useNavigate();
-
-  const { id } = useParams();
 
   const handleMemberSearch = () => {
     groupMemberSearch(id, name).then((data) => {
@@ -22,6 +31,7 @@ const GroupAddMemberPage = () => {
       navigate(`/group/${id}`);
     });
   };
+  const { user } = useContext(AuthenticationContext);
 
   return (
     <div>
@@ -42,8 +52,14 @@ const GroupAddMemberPage = () => {
           </li>
         ))}
       </ul>
-
-      <p>Added members: </p>
+      {user && group && (
+        <div>
+          <p>Added members: </p>
+          <p>
+            members: {group.members.map((member) => member.name).join(', ')}
+          </p>
+        </div>
+      )}
     </div>
   );
 };

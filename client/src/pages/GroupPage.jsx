@@ -2,11 +2,13 @@ import React from 'react';
 import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import GroupCard from '../components/GroupCard';
-import { listGroups } from '../services/group';
+import { groupSearch, listGroups } from '../services/group';
 import AuthenticationContext from '../context/authentication';
+import GroupSearchForm from '../components/GroupSearchForm';
 
 const GroupPage = () => {
   const [groups, setGroups] = useState([]);
+  const [groupName, setGroupName] = useState([]);
 
   useEffect(() => {
     listGroups().then((data) => {
@@ -14,12 +16,19 @@ const GroupPage = () => {
     });
   }, []);
 
+  const handleGroupSearch = () => {
+    groupSearch(groupName).then((data) => {
+      console.log(data);
+      setGroups(data.groups);
+    });
+  };
+
   const { user } = useContext(AuthenticationContext);
+  //const { group } = useContext(AuthenticationContext);
 
   return (
     <div className="groups">
       {!user && <p>log in to see the list of groups</p>}
-
       {user && (
         <div className="header">
           <Link to={`/profile/${user._id}`}>
@@ -32,21 +41,56 @@ const GroupPage = () => {
 
           <h1>Groups</h1>
 
-          <input
+          {/*<input
             id="input-listed"
             type="text"
             placeholder="Search for group (fix this)"
             // value={name}
             // onChange={(event) => onSearchQueryChange(event.target.value)}
           />
+          <ul>
+            {groups.map((group) => (
+              <li key={group._id}>
+                <img src="" alt="" />
+                <span>{group.name}</span>
+              </li>
+            ))}
+          </ul> */}
 
-          {groups.map((group) => (
+          {/**{groups.map((group) => (
             <div className="" key={group._id}>
-              <GroupCard group={group} />
+              <GroupCard
+                group={group}
+                groupName={groupName}
+                onSearchQueryChange={setGroupName}
+                onSearchSubmit={handleGroupSearch}
+              />
             </div>
-          ))}
+          ))} */}
         </div>
       )}
+      <div>
+        <GroupSearchForm
+          group={groupName}
+          onSearchQueryChange={setGroupName}
+          onSearchSubmit={handleGroupSearch}
+        />
+        <ul>
+          {groups.map((group) => (
+            <li key={group._id}>
+              <span>
+                <GroupCard
+                  group={group}
+                  groupName={groupName}
+                  onSearchQueryChange={setGroupName}
+                  onSearchSubmit={handleGroupSearch}
+                />
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div className="navigation-bottom">
         <div className="circle">
           <Link className="active" to="/group">
