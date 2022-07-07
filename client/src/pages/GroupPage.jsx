@@ -73,9 +73,6 @@ const GroupPage = () => {
               alt="Groups"
             />
           </Link>
-          <Link to="/group">
-            <img className="events-icon" src="/images/event.svg" alt="Events" />
-          </Link>
           {user && (
             <Link to={`/profile/${user._id}`}>
               <img

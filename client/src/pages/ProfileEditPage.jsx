@@ -58,9 +58,6 @@ const ProfileEditPage = () => {
               alt="Groups"
             />
           </Link>
-          <Link to="/group">
-            <img className="events-icon" src="/images/event.svg" alt="Events" />
-          </Link>
           <Link className="active" to={`/profile/${id}`}>
             <img
               className="profile-icon"

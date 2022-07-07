@@ -54,7 +54,7 @@ const ProfilePage = () => {
         <div className='user-info'>
           <img
             className='profile-img'
-            src={profile.picture || "images/profile1.png"}
+            src={profile.picture || "/images/green default profile picture.jpg"}
             alt={profile.name}
           />
           <h1>{profile.name}</h1>
@@ -79,9 +79,6 @@ const ProfilePage = () => {
               src='/images/groups.svg'
               alt='Groups'
             />
-          </Link>
-          <Link to='/group'>
-            <img className='events-icon' src='/images/event.svg' alt='Events' />
           </Link>
           <Link className='active' to={`/profile/${id}`}>
             <img
