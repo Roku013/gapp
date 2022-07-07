@@ -54,7 +54,7 @@ const ProfilePage = () => {
         <div className='user-info'>
           <img
             className='profile-img'
-            src={profile.picture || <img src='images/profile1.png' />}
+            src={profile.picture || "images/profile1.png"}
             alt={profile.name}
           />
           <h1>{profile.name}</h1>
