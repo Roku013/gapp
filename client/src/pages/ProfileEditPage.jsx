@@ -1,12 +1,11 @@
 import { useContext, useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AuthenticationContext from '../context/authentication';
 import AuthenticationForm from '../components/AuthenticationForm';
 import { profileEdit, profileLoad } from '../services/profile';
 import { useNavigate } from 'react-router-dom';
 
 const ProfileEditPage = () => {
-  const { id } = useParams();
   const [profile, setProfile] = useState(null);
 
   const navigate = useNavigate();
