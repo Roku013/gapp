@@ -32,6 +32,7 @@ router.get('/', (req, res, next) => {
   //   }
   // })
   // .then((groups) => {
+  console.log('console logging');
   Group.find({
     name: { $regex: new RegExp(groupName, 'i') },
     members: {
@@ -41,7 +42,6 @@ router.get('/', (req, res, next) => {
     .then((groups) => {
       res.json({ groups });
     })
-
     .catch((error) => {
       next(error);
     });
@@ -77,11 +77,16 @@ router.post('/add', routeGuard, (req, res, next) => {
   const { creator } = req.user._id;
   // console.log(name);
 
-  Group.create({
-    name,
-    description,
-    creator: req.user._id
-  })
+  Group.create(
+    {
+      name,
+      description,
+      creator: req.user._id
+    },
+    {
+      $push: { members: user._id }
+    }
+  )
     .then((group) => {
       res.json({ group });
     })
