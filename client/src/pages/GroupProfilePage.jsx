@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import AuthenticationContext from '../context/authentication';
-import { groupLoad, groupRemove } from '../services/group';
+import React, { useEffect, useState, useContext } from "react";
+import { Link, useParams } from "react-router-dom";
+import AuthenticationContext from "../context/authentication";
+import { groupLoad, groupRemove } from "../services/group";
 
 const GroupProfilePage = (req) => {
   const { id } = useParams();
@@ -24,30 +24,37 @@ const GroupProfilePage = (req) => {
       <h1> group profile page </h1>
       {user && group && (
         <div>
+          <img
+            src={
+              group.picture ||
+              "https://cdn2.iconfinder.com/data/icons/avatar1/166/Untitled-1-512.png"
+            }
+            alt={group.name}
+          />
           <p>name: {group.name}</p>
           <p>creator: {group.creator.name}</p>
           <p>description: {group.description}</p>
           <p>
-            members: {group.members.map((member) => member.name).join(', ')}
+            members: {group.members.map((member) => member.name).join(", ")}
           </p>
 
           {group.creator._id === user._id && (
             <div>
               <form
-                method="DELETE"
-                action="/group"
+                method='DELETE'
+                action='/group'
                 onSubmit={handleGroupRemoval}
               >
-                <button className="-green">Delete group</button>
+                <button className='-green'>Delete group</button>
               </form>
               <br />
               <Link to={`/group/edit/${id}`}>
-                <button className="-green">Edit group</button>
+                <button className='-green'>Edit group</button>
               </Link>
 
               <br />
               <Link to={`/group/${id}/member/add`}>
-                <button className="-green">Add/Remove members</button>
+                <button className='-green'>Add/Remove members</button>
               </Link>
               <br />
             </div>

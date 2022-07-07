@@ -1,9 +1,10 @@
-import api from './api';
+import api from "./api";
 
-export const listGroups = () => api.get('/group').then((res) => res.data);
+export const listGroups = () =>
+  api.get("/group/list-all").then((res) => res.data);
 
 export const groupAdd = (group) =>
-  api.post('/group/add', group).then((res) => res.data);
+  api.post("/group/add", group).then((res) => res.data);
 
 export const groupSearch = (groupName) =>
   api.get(`/group?groupName=${groupName}`).then((res) => res.data);

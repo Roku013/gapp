@@ -32,6 +32,14 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/list-all', (req, res, next) => {
+  Group.find({
+    creator: req.user._id
+  })
+    .then((groups) => res.json({ groups }))
+    .catch((err) => next(err));
+});
+
 // group creation
 router.post('/add', routeGuard, (req, res, next) => {
   const { name, description } = req.body;
