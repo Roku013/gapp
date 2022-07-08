@@ -16,8 +16,7 @@ const GroupAddPage = () => {
   const handleGroupCreation = () => {
     groupAdd(group).then((data) => {
       const id = data.group._id;
-      console.log(data);
-      navigate(`/group/${id}`);
+      navigate(`/group/${id}/member/add`);
     });
   };
   const { user } = useContext(AuthenticationContext);
@@ -37,7 +36,7 @@ const GroupAddPage = () => {
         group={group}
         onGroupChange={setGroup}
         onGroupSubmit={handleGroupCreation}
-        buttonLabel='Create new Group'
+        buttonLabel='Next'
       />
       <div className='navigation-bottom'>
         <div className='circle'>

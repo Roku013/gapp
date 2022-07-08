@@ -7,17 +7,41 @@ const routeGuard = require('./../middleware/route-guard');
 
 const router = new express.Router();
 
-/* //display all groups
+// group search
 router.get('/', (req, res, next) => {
-  let groups;
-  Group.find()
+  const { groupName } = req.query;
+  Group.find({
+    members: {
+      $in: [req.user._id]
+    },
+    name: { $regex: new RegExp(groupName, 'i') }
+  })
     .then((groups) => {
       res.json({ groups });
     })
-    .catch((error) => next(error));
-});*/
+    .catch((error) => {
+      next(error);
+    });
+});
 
+/*
 router.get('/', (req, res, next) => {
+  const { groupName } = req.query;
+  Group.find({
+    members: {
+      $in: [req.user._id]
+    },
+    name: { $regex: new RegExp(groupName, 'i') }
+  })
+    .then((groups) => {
+      res.json({ groups });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+/*router.get('/', (req, res, next) => {
   const { groupName } = req.query;
 
   //   let isGroupMember = groups.map((group) =>
@@ -34,10 +58,7 @@ router.get('/', (req, res, next) => {
   // .then((groups) => {
   console.log('console logging');
   Group.find({
-    name: { $regex: new RegExp(groupName, 'i') },
-    members: {
-      $in: [req.user._id]
-    }
+    name: { $regex: new RegExp(groupName, 'i') }
   })
     .then((groups) => {
       res.json({ groups });
@@ -45,7 +66,7 @@ router.get('/', (req, res, next) => {
     .catch((error) => {
       next(error);
     });
-});
+});*/
 
 /*
 // group search
@@ -63,7 +84,8 @@ router.get('/', (req, res, next) => {
 });
 */
 
-router.get('/list-all', (req, res, next) => {
+// group profile - display only groups youre creator of
+router.get('/profile/:id', (req, res, next) => {
   Group.find({
     creator: req.user._id
   })
@@ -75,19 +97,16 @@ router.get('/list-all', (req, res, next) => {
 router.post('/add', routeGuard, (req, res, next) => {
   const { name, description, picture } = req.body;
   const { creator } = req.user._id;
-  // console.log(name);
+  console.log('picture' + picture);
 
-  Group.create(
-    {
-      name,
-      description,
-      picture,
-      creator: req.user._id
-    },
-    {
-      $push: { members: user._id }
-    }
-  )
+  Group.create({
+    name,
+    description,
+    picture,
+    creator: req.user._id,
+    members: [req.user._id]
+  })
+
     .then((group) => {
       res.json({ group });
     })
@@ -134,6 +153,21 @@ router.post('/:id/member/add', (req, res, next) => {
     })
     .then(() => {
       res.json({});
+    })
+    .catch((err) => next(err));
+});
+
+// remove group member
+router.delete('/:id/member/add', (req, res, next) => {
+  const memberId = req.params.id;
+  const { group } = req.query;
+
+  console.log('here: ' + group);
+  Group.findByIdAndUpdate(group, {
+    $pull: { members: memberId }
+  })
+    .then(() => {
+      res.redirect('/group');
     })
     .catch((err) => next(err));
 });

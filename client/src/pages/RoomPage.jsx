@@ -55,6 +55,9 @@ const RoomPage = () => {
 
   let innerHeight = window.innerHeight;
 
+  console.log('messages: ', messages);
+  console.log('user: ', user);
+
   return (
     <div className="room">
       <div className="header">
@@ -73,10 +76,47 @@ const RoomPage = () => {
         {group && <h1>{group.name}</h1>}
       </div>
       <div className="chat" style={{ height: innerHeight - 136 }}>
+        {/* {messages.map((message) => {
+          if (true) {
+            // console.log(message.user._id, id);
+            return (
+              <ul>
+                {messages.map((message) => (
+                  <li className="current-user" key={message._id}>
+                    <p className="grey">{message.user.name}:</p>
+                    <p>{message.content}</p>
+                  </li>
+                ))}
+              </ul>
+            );
+          } else {
+            // console.log(message.user._id, id);
+            return (
+              <ul>
+                {messages.map((message) => (
+                  <li className="other-users" key={message._id}>
+                    <p className="grey">{message.user.name}:</p>
+                    <p>{message.content}</p>
+                  </li>
+                ))}
+              </ul>
+            );
+          }
+        })} */}
         <ul>
           {messages.map((message) => (
-            <li key={message._id}>
-              <p className="grey">{message.user.name}:</p>
+            <li
+              className={
+                message.user._id === user._id ? 'current-user' : 'other-users'
+              }
+              key={message._id}
+            >
+              <p
+                className={message.user._id === user._id ? 'none' : 'grey'}
+                key={message._id}
+              >
+                {message.user.name}:
+              </p>
               <p>{message.content}</p>
             </li>
           ))}

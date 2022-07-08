@@ -3,10 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import AuthenticationContext from '../context/authentication';
 import { registerUser } from '../services/authentication';
 import { Link } from 'react-router-dom';
+import ImgSignUp from '../components/ImgSignUp';
 
 const RegisterPage = () => {
-
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,7 +32,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div>
+    <div className="sign-up">
       {/* <img className="logo" src="/images/logo.png" alt="Gapp logo" /> */}
       <div className="sign-up-nav">
         <Link to="/">
@@ -71,6 +70,8 @@ const RegisterPage = () => {
         </div>
 
         <button className="-green">Sign Up</button>
+
+        <ImgSignUp />
       </form>
     </div>
   );

@@ -1,14 +1,15 @@
 import { useState, useEffect, useContext } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import MemberForm from "../components/MemberForm";
 import {
   groupLoad,
   groupMemberAdd,
+  groupMemberDelete,
   groupMemberSearch
 } from "../services/group";
 import AuthenticationContext from "../context/authentication";
 
-const GroupAddMemberPage = (req) => {
+const GroupAddMembersPage = (req) => {
   const { id } = useParams();
   const [name, setName] = useState("");
   const [users, setUsers] = useState([]);
@@ -28,8 +29,15 @@ const GroupAddMemberPage = (req) => {
 
   const handleMemberAddition = (member) => {
     groupMemberAdd(id, member).then((data) => {
-      navigate(`/group/${id}`);
+      navigate(`/group/${id}/member/add`);
     });
+  };
+
+  const handleGroupMemberDeletion = (id, group) => {
+    console.log("handlememberdel ");
+    groupMemberDelete(id, group); /* .then((data) => {
+       navigate(`/group/${id}/member/add`);
+    }); */
   };
   const { user } = useContext(AuthenticationContext);
 
@@ -48,40 +56,54 @@ const GroupAddMemberPage = (req) => {
           <li key={user._id}>
             <img src='' alt='' />
             <span>{user.name}</span>
+            <form action=''></form>
             <button onClick={() => handleMemberAddition(user._id)}>+</button>
           </li>
         ))}
       </ul>
-      {user && group && (
-        <div>
-          <p>Added members: </p>
-          <p>
-            members: {group.members.map((member) => member.name).join(", ")}
-          </p>
-        </div>
-      )}
-      <div className='navigation-bottom'>
-        <div className='circle'>
-          <Link className='active' to={`/group/${id}`}>
-            <img
-              className='groups-icon'
-              src='/images/groups.svg'
-              alt='Groups'
-            />
-          </Link>
-          {user && (
-            <Link to={`/profile/${user._id}`}>
-              <img
-                className='profile-icon'
-                src='/images/profile.svg'
-                alt='Profile'
-              />
-            </Link>
-          )}
-        </div>
-      </div>
+
+      <ul>
+        {user && group && (
+          <>
+            <p>Added members:</p>
+            {/* <ul>
+              <p>
+                <li key={user._id}>
+                  <img width="50px" src={user.picture} alt="profile pic" />
+                  {group.members.map((member) => member.name).join(', ')}
+                </li>
+              </p>
+            </ul> */}
+
+            <ul>
+              {group.members.map((member) => (
+                <li key={member._id}>
+                  <span>{member.name}</span>
+                  <form
+                    method='DELETE'
+                    //  action="/group"
+                    onClick={() =>
+                      handleGroupMemberDeletion(member._id, group._id)
+                    }
+                    //onSubmit={handleGroupMemberDeletion}
+                  >
+                    <button className='-green'>Delete member</button>
+                  </form>
+                  {/*  <button onClick={() => handleGroupMemberDeletion(member._id)}>
+                    -
+                  </button> */}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </ul>
+
+      <Link to='/group'>
+        <button className='-green'>Done</button>
+      </Link>
     </div>
   );
 };
 
-export default GroupAddMemberPage;
+export default GroupAddMembersPage;

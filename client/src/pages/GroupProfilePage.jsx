@@ -25,10 +25,7 @@ const GroupProfilePage = (req) => {
       {user && group && (
         <div>
           <img
-            src={
-              group.picture ||
-              "https://cdn2.iconfinder.com/data/icons/avatar1/166/Untitled-1-512.png"
-            }
+            src={group.picture || "/images/group-profile-avatar.svg"}
             alt={group.name}
           />
           <p>name: {group.name}</p>
