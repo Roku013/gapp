@@ -5,7 +5,6 @@ import GroupCard from '../components/GroupCard';
 import { groupListLoad, groupSearch } from '../services/group';
 import AuthenticationContext from '../context/authentication';
 import GroupSearchForm from '../components/GroupSearchForm';
-import ImgGroups from '../components/ImgGroups';
 
 const GroupPage = () => {
   const [groups, setGroups] = useState([]);
@@ -24,6 +23,8 @@ const GroupPage = () => {
   };
 
   const { user } = useContext(AuthenticationContext);
+
+  console.log(groups.length);
 
   return (
     <div className="groups">
@@ -47,7 +48,9 @@ const GroupPage = () => {
           onSearchQueryChange={setGroupName}
           onSearchSubmit={handleGroupSearch}
         />
-        <ImgGroups />
+        <div className={groups.length === 0 ? 'group-img' : 'none'}>
+          <img src="/images/group.svg" alt="profileimage" />
+        </div>
         <ul>
           {groups.map((group) => (
             <li key={group._id}>

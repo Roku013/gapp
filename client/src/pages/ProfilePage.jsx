@@ -34,7 +34,7 @@ const ProfilePage = () => {
     });
   };
 
-  // console.log(groups);
+  console.log(groups);
 
   return (
     <div className="profile-page">
@@ -62,6 +62,12 @@ const ProfilePage = () => {
           <h1>{profile.name}</h1>
         </div>
       )}
+
+      {/* Im not allowed to use length */}
+
+      {/* <div className={groups.length === 0 ? 'group-img' : 'none'}>
+        <img src="/images/profile-img.svg" alt="profileimage" />
+      </div> */}
 
       <div className="group-list-slide">
         {Boolean(groups) && (
