@@ -23,20 +23,23 @@ const GroupAddMembersPage = (req) => {
 
   const handleMemberSearch = () => {
     groupMemberSearch(id, name).then((data) => {
+      console.log('handlesearch');
       setUsers(data.users);
     });
   };
 
   const handleMemberAddition = (member) => {
+    window.location.reload(true);
     groupMemberAdd(id, member).then((data) => {
       navigate(`/group/${id}/member/add`);
     });
   };
 
-  const handleGroupDeletion = (member) => {
-    groupMemberDelete(id, member).then((data) => {
-      navigate(`/group/${id}/member/add`);
-    });
+  const handleGroupMemberDeletion = (id, group) => {
+    console.log('handlememberdel ');
+    groupMemberDelete(id, group); /* .then((data) => {
+       navigate(`/group/${id}/member/add`);
+    }); */
   };
   const { user } = useContext(AuthenticationContext);
 
@@ -55,6 +58,7 @@ const GroupAddMembersPage = (req) => {
           <li key={user._id}>
             <img src="" alt="" />
             <span>{user.name}</span>
+            <form action=""></form>
             <button onClick={() => handleMemberAddition(user._id)}>+</button>
           </li>
         ))}
@@ -63,23 +67,33 @@ const GroupAddMembersPage = (req) => {
       <ul>
         {user && group && (
           <>
-            <div>
+            <p>Added members:</p>
+            {/* <ul>
               <p>
-                Added members:
                 <li key={user._id}>
                   <img width="50px" src={user.picture} alt="profile pic" />
                   {group.members.map((member) => member.name).join(', ')}
                 </li>
               </p>
-            </div>
+            </ul> */}
 
             <ul>
               {group.members.map((member) => (
-                <li key={user._id}>
+                <li key={member._id}>
                   <span>{member.name}</span>
-                  <button onClick={() => handleGroupDeletion(user._id)}>
+                  <form
+                    method="DELETE"
+                    //  action="/group"
+                    onClick={() =>
+                      handleGroupMemberDeletion(member._id, group._id)
+                    }
+                    //onSubmit={handleGroupMemberDeletion}
+                  >
+                    <button className="-green">Delete member</button>
+                  </form>
+                  {/*  <button onClick={() => handleGroupMemberDeletion(member._id)}>
                     -
-                  </button>
+                  </button> */}
                 </li>
               ))}
             </ul>

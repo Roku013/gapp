@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+/*import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { groupRemove } from '../services/group';
 
@@ -21,3 +21,4 @@ const GroupDeletePage = () => {
 };
 
 export default GroupDeletePage;
+*/

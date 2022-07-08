@@ -155,20 +155,20 @@ router.post('/:id/member/add', (req, res, next) => {
     .catch((err) => next(err));
 });
 
-/*// add group member
-router
-  .delete('/:id/member/add', (req, res, next) => {
-    const groupId = req.params.id;
-    const memberId = req.body.member;
+// remove group member
+router.delete('/:id/member/add', (req, res, next) => {
+  const memberId = req.params.id;
+  const { group } = req.query;
 
-    Group.findByIdAndRemove(groupId, {
-      $pull: { members: memberId }
-    });
+  console.log('here: ' + group);
+  Group.findByIdAndUpdate(group, {
+    $pull: { members: memberId }
   })
-  .then(() => {
-    res.json({});
-  })
-  .catch((err) => next(err));*/
+    .then(() => {
+      res.redirect('/group');
+    })
+    .catch((err) => next(err));
+});
 
 // remove group
 router.delete('/:id', (req, res, next) => {

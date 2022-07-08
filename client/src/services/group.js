@@ -18,8 +18,8 @@ export const groupMemberSearch = (id, name) =>
 export const groupMemberAdd = (id, member) =>
   api.post(`/group/${id}/member/add`, { member }).then((res) => res.data);
 
-export const groupMemberDelete = (id) =>
-  api.delete(`/group/${id}/member/add`).then((res) => res.data);
+export const groupMemberDelete = (id, group) =>
+  api.delete(`/group/${id}/member/add?group=${group}`).then((res) => res.data);
 
 export const groupLoad = (id) =>
   api.get(`/group/${id}`).then((res) => res.data);
