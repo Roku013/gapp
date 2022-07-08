@@ -10,7 +10,7 @@ const AuthenticationForm = (props) => {
     <form onSubmit={handleSubmission}>
       {props.displayInputs.includes('name') && (
         <>
-          <label htmlFor="input-name">Name</label>
+          {/* <label htmlFor="input-name">Name</label> */}
           <input
             id="input-name"
             type="text"
@@ -25,7 +25,7 @@ const AuthenticationForm = (props) => {
 
       {props.displayInputs.includes('email') && (
         <>
-          <label htmlFor="input-email">Email</label>
+          {/* <label htmlFor="input-email">Email</label> */}
           <input
             id="input-email"
             type="email"
@@ -39,14 +39,14 @@ const AuthenticationForm = (props) => {
       )}
 
       {props.displayInputs.includes('picture') && (
-        <>
+        <div className="profile-edit-page-image">
           <ImageInput
             image={props.user.picture}
             onImageChange={(picture) =>
               props.onUserChange({ ...props.user, picture })
             }
           />
-        </>
+        </div>
       )}
 
       <button className="-green">{props.buttonLabel}</button>

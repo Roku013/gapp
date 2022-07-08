@@ -24,6 +24,8 @@ const GroupPage = () => {
 
   const { user } = useContext(AuthenticationContext);
 
+  console.log(groups.length);
+
   return (
     <div className="groups">
       {!user && <p>Log in to see the list of groups</p>}
@@ -46,6 +48,9 @@ const GroupPage = () => {
           onSearchQueryChange={setGroupName}
           onSearchSubmit={handleGroupSearch}
         />
+        <div className={groups.length === 0 ? 'group-img' : 'none'}>
+          <img src="/images/group.svg" alt="profileimage" />
+        </div>
         <ul>
           {groups.map((group) => (
             <li key={group._id}>
