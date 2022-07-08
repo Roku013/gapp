@@ -145,16 +145,15 @@ router.delete('/:id', (req, res, next) => {
 // edit group
 router.patch('/:id', routeGuard, (req, res, next) => {
   const { id } = req.params;
-  const { name, description, members } = req.body;
+  const { name, description, members, picture } = req.body;
   const creator = req.user._id;
   Group.findOneAndUpdate(
     { _id: id, creator },
-    { name, description, members },
+    { name, description, members, picture },
     { new: true }
   )
 
     .then((group) => {
-      console.log(group);
       res.json({ group });
     })
     .catch((error) => {

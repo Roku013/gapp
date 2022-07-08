@@ -1,9 +1,9 @@
-import { useContext, useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import AuthenticationContext from '../context/authentication';
-import AuthenticationForm from '../components/AuthenticationForm';
-import { profileEdit, profileLoad } from '../services/profile';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import AuthenticationContext from "../context/authentication";
+import AuthenticationForm from "../components/AuthenticationForm";
+import { profileEdit, profileLoad } from "../services/profile";
+import { useNavigate } from "react-router-dom";
 
 const ProfileEditPage = () => {
   const { id } = useParams();
@@ -42,29 +42,31 @@ const ProfileEditPage = () => {
       {profile && (
         <AuthenticationForm
           user={profile}
-          buttonLabel="Edit Profile"
-          displayInputs={['name', 'email', 'picture']}
+          buttonLabel='Edit Profile'
+          displayInputs={["name", "email", "picture"]}
           onUserChange={setProfile}
           onAuthenticationSubmit={handleProfileEdit}
         />
       )}
 
-      <div className="navigation-bottom">
-        <div className="circle">
-          <Link to="/group">
+      <div className='navigation-bottom'>
+        <div className='circle'>
+          <Link to='/group'>
             <img
-              className="groups-icon"
-              src="/images/groups.svg"
-              alt="Groups"
+              className='groups-icon'
+              src='/images/groups.svg'
+              alt='Groups'
             />
           </Link>
-          <Link className="active" to={`/profile/${id}`}>
-            <img
-              className="profile-icon"
-              src="/images/profile.svg"
-              alt="Profile"
-            />
-          </Link>
+          {user && (
+            <Link className='active' to={`/profile/${id}`}>
+              <img
+                className='profile-icon'
+                src='/images/profile.svg'
+                alt='Profile'
+              />
+            </Link>
+          )}
         </div>
       </div>
     </div>

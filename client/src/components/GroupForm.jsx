@@ -1,11 +1,5 @@
 import ImageInput from "./ImageInput";
-const GroupForm = ({
-  group,
-  onGroupChange,
-  onGroupSubmit,
-  onImageChange,
-  buttonLabel
-}) => {
+const GroupForm = ({ group, onGroupChange, onGroupSubmit, buttonLabel }) => {
   const handleGroupFormSubmission = (event) => {
     event.preventDefault();
     onGroupSubmit();
@@ -39,16 +33,14 @@ const GroupForm = ({
           }
         />
       </div>
-      <div>
-        <label htmlFor='input-listed'>
-          <p>Group image</p>
-        </label>
 
+      <label htmlFor='input-picture'>
+        <p>Group image</p>
+      </label>
+      <div>
         <ImageInput
           image={group.picture}
-          onChange={(event) =>
-            onImageChange({ ...group, picture: event.target.value })
-          }
+          onImageChange={(picture) => onGroupChange({ ...group, picture })}
         />
       </div>
       <button className='-green'>{buttonLabel}</button>
