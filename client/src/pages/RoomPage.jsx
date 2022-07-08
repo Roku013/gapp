@@ -75,7 +75,12 @@ const RoomPage = () => {
       <div className="chat" style={{ height: innerHeight - 136 }}>
         <ul>
           {messages.map((message) => (
-            <li key={message._id}>
+            // <li
+            //   className={user ? 'other-users' : 'current-user'}
+            //   key={message._id}
+            // >
+
+            <li className="current-user" key={message._id}>
               <p className="grey">{message.user.name}:</p>
               <p>{message.content}</p>
             </li>

@@ -5,6 +5,7 @@ import GroupCard from '../components/GroupCard';
 import { groupSearch, listGroups } from '../services/group';
 import AuthenticationContext from '../context/authentication';
 import GroupSearchForm from '../components/GroupSearchForm';
+import ImgGroups from '../components/ImgGroups';
 
 const GroupPage = () => {
   const [groups, setGroups] = useState([]);
@@ -48,6 +49,7 @@ const GroupPage = () => {
           onSearchQueryChange={setGroupName}
           onSearchSubmit={handleGroupSearch}
         />
+        <ImgGroups />
         <ul>
           {groups.map((group) => (
             <li key={group._id}>
