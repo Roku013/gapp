@@ -34,7 +34,7 @@ const ProfilePage = () => {
     });
   };
 
-  console.log(groups);
+  // console.log(groups);
 
   return (
     <div className="profile-page">
