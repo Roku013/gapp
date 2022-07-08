@@ -9,7 +9,7 @@ import { listGroups } from '../services/group';
 const ProfilePage = () => {
   const { id } = useParams();
   const [profile, setProfile] = useState(null);
-  const [groups, setGroups] = useState();
+  const [groups, setGroups] = useState([]);
 
   useEffect(() => {
     profileLoad(id).then((data) => {
@@ -34,7 +34,7 @@ const ProfilePage = () => {
     });
   };
 
-  console.log(groups);
+  // console.log(groups.length);
 
   return (
     <div className="profile-page">
@@ -65,9 +65,9 @@ const ProfilePage = () => {
 
       {/* Im not allowed to use length */}
 
-      {/* <div className={groups.length === 0 ? 'group-img' : 'none'}>
+      <div className={groups.length === 0 ? 'profile-img' : 'none'}>
         <img src="/images/profile-img.svg" alt="profileimage" />
-      </div> */}
+      </div>
 
       <div className="group-list-slide">
         {Boolean(groups) && (
