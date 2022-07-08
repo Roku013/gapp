@@ -24,10 +24,7 @@ const GroupProfilePage = (req) => {
       <h1> group profile page </h1>
       {user && group && (
         <div>
-          <img
-            src={group.picture || "/images/group-profile-avatar.svg"}
-            alt={group.name}
-          />
+          <img src={group.picture} alt={group.name} />
           <p>name: {group.name}</p>
           <p>creator: {group.creator.name}</p>
           <p>description: {group.description}</p>
@@ -58,6 +55,27 @@ const GroupProfilePage = (req) => {
           )}
         </div>
       )}
+
+      <div className='navigation-bottom'>
+        <div className='circle'>
+          <Link className='active' to={`/group/${id}`}>
+            <img
+              className='groups-icon'
+              src='/images/groups.svg'
+              alt='Groups'
+            />
+          </Link>
+          {user && (
+            <Link to={`/profile/${user._id}`}>
+              <img
+                className='profile-icon'
+                src='/images/profile.svg'
+                alt='Profile'
+              />
+            </Link>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
