@@ -104,6 +104,27 @@ const GroupAddMembersPage = (req) => {
       <Link to='/group'>
         <button className='-green'>Done</button>
       </Link>
+
+      <div className='navigation-bottom'>
+        <div className='circle'>
+          <Link className='active' to={`/group/${id}`}>
+            <img
+              className='groups-icon'
+              src='/images/groups.svg'
+              alt='Groups'
+            />
+          </Link>
+          {user && (
+            <Link to={`/profile/${user._id}`}>
+              <img
+                className='profile-icon'
+                src='/images/profile.svg'
+                alt='Profile'
+              />
+            </Link>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
