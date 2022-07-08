@@ -24,14 +24,13 @@ const GroupProfilePage = (req) => {
       <h1> group profile page </h1>
       {user && group && (
         <div>
-          <img src={group.picture} alt={group.name} />
+          <img src={group.picture} alt='' />
           <p>name: {group.name}</p>
           <p>creator: {group.creator.name}</p>
           <p>description: {group.description}</p>
           <p>
             members: {group.members.map((member) => member.name).join(", ")}
           </p>
-
           {group.creator._id === user._id && (
             <div>
               <form
