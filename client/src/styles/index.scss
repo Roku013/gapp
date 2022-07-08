@@ -274,8 +274,8 @@ button {
     flex-direction: column-reverse;
 
     ul {
-      padding-left: 10px;
-      padding-right: 40px;
+      padding-left: 0px;
+      width: 100%;
 
       .other-users {
         list-style-type: none;
@@ -284,6 +284,7 @@ button {
         border-radius: 8px;
         margin-bottom: 10px;
         padding: 10px;
+        width: 90%;
 
         .grey {
           color: #bdbdbd;
@@ -293,10 +294,12 @@ button {
       .current-user {
         list-style-type: none;
         background-color: #5db075;
-        border: solid 1px #408554;
+
         border-radius: 8px;
         margin-bottom: 10px;
         padding: 10px;
+        float: right;
+        width: 90%;
 
         p {
           color: white;
@@ -317,13 +320,13 @@ button {
   .message {
     bottom: 0;
     position: sticky;
-    width: 340px;
+    // width: 340px;
     margin: 0 auto;
     height: $heigth-input;
     background: white;
 
     input {
-      width: 340px;
+      width: calc(100% - 20px);
       height: 50px;
       border-radius: 100px;
       padding-right: 48px;
@@ -347,7 +350,7 @@ button {
       position: absolute;
       padding: 0;
       top: -2px;
-      left: -6px;
+      left: -26px;
     }
   }
 }

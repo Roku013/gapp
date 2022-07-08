@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import GroupForm from '../components/GroupForm';
-import { groupEdit, groupLoad } from '../services/group';
+import { useEffect, useState, useContext } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
+import GroupForm from "../components/GroupForm";
+import AuthenticationContext from "../context/authentication";
+import { groupEdit, groupLoad } from "../services/group";
 
 const GroupEditPage = () => {
   const { id } = useParams();
@@ -19,6 +20,7 @@ const GroupEditPage = () => {
     groupLoad(id).then((data) => setGroup(data.group));
   }, [id]);
 
+  const { user } = useContext(AuthenticationContext);
   return (
     <div>
       <h1>Edit Group</h1>
@@ -27,9 +29,29 @@ const GroupEditPage = () => {
           group={group}
           onGroupChange={setGroup}
           onGroupSubmit={handleGroupEdit}
-          buttonLabel="Edit Group"
+          buttonLabel='Edit Group'
         />
       )}
+      <div className='navigation-bottom'>
+        <div className='circle'>
+          <Link className='active' to={`/group/${id}`}>
+            <img
+              className='groups-icon'
+              src='/images/groups.svg'
+              alt='Groups'
+            />
+          </Link>
+          {user && (
+            <Link to={`/profile/${user._id}`}>
+              <img
+                className='profile-icon'
+                src='/images/profile.svg'
+                alt='Profile'
+              />
+            </Link>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

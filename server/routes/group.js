@@ -47,7 +47,7 @@ router.get('/', (req, res, next) => {
   //   let isGroupMember = groups.map((group) =>
   //     group.members.includes('62c2d905d60634e0fa216058')
   //   );
-  //   console.log('isGroupMember: ' + isGroupMember);
+
   //   if (isGroupMember) {
   //     return Group.find({
   //       // _id: { $nin: isGroupMember },
@@ -56,7 +56,7 @@ router.get('/', (req, res, next) => {
   //   }
   // })
   // .then((groups) => {
-  console.log('console logging');
+
   Group.find({
     name: { $regex: new RegExp(groupName, 'i') }
   })
@@ -95,16 +95,17 @@ router.get('/profile/:id', (req, res, next) => {
 
 // group creation
 router.post('/add', routeGuard, (req, res, next) => {
-  const { name, description } = req.body;
+  const { name, description, picture } = req.body;
   const { creator } = req.user._id;
-  // console.log(name);
 
   Group.create({
     name,
     description,
+    picture,
     creator: req.user._id,
     members: [req.user._id]
   })
+
     .then((group) => {
       res.json({ group });
     })
@@ -115,7 +116,6 @@ router.post('/add', routeGuard, (req, res, next) => {
 router.get('/:id/member/search', (req, res, next) => {
   const { name } = req.query;
   const groupId = req.params.id;
-  // console.log(req.query);
 
   Group.findById(groupId)
     .then((group) => {
@@ -160,7 +160,6 @@ router.delete('/:id/member/add', (req, res, next) => {
   const memberId = req.params.id;
   const { group } = req.query;
 
-  console.log('here: ' + group);
   Group.findByIdAndUpdate(group, {
     $pull: { members: memberId }
   })
@@ -186,16 +185,15 @@ router.delete('/:id', (req, res, next) => {
 // edit group
 router.patch('/:id', routeGuard, (req, res, next) => {
   const { id } = req.params;
-  const { name, description, members } = req.body;
+  const { name, description, members, picture } = req.body;
   const creator = req.user._id;
   Group.findOneAndUpdate(
     { _id: id, creator },
-    { name, description, members },
+    { name, description, members, picture },
     { new: true }
   )
 
     .then((group) => {
-      // console.log(group);
       res.json({ group });
     })
     .catch((error) => {
