@@ -1,14 +1,15 @@
 import { useState, useEffect, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import MemberForm from '../components/MemberForm';
 import {
   groupLoad,
   groupMemberAdd,
+  groupMemberDelete,
   groupMemberSearch
 } from '../services/group';
 import AuthenticationContext from '../context/authentication';
 
-const GroupAddMemberPage = (req) => {
+const GroupAddMembersPage = (req) => {
   const { id } = useParams();
   const [name, setName] = useState('');
   const [users, setUsers] = useState([]);
@@ -28,7 +29,13 @@ const GroupAddMemberPage = (req) => {
 
   const handleMemberAddition = (member) => {
     groupMemberAdd(id, member).then((data) => {
-      navigate(`/group/${id}`);
+      navigate(`/group/${id}/member/add`);
+    });
+  };
+
+  const handleGroupDeletion = (member) => {
+    groupMemberDelete(id, member).then((data) => {
+      navigate(`/group/${id}/member/add`);
     });
   };
   const { user } = useContext(AuthenticationContext);
@@ -52,16 +59,39 @@ const GroupAddMemberPage = (req) => {
           </li>
         ))}
       </ul>
-      {user && group && (
-        <div>
-          <p>Added members: </p>
-          <p>
-            members: {group.members.map((member) => member.name).join(', ')}
-          </p>
-        </div>
-      )}
+
+      <ul>
+        {user && group && (
+          <>
+            <div>
+              <p>
+                Added members:
+                <li key={user._id}>
+                  <img width="50px" src={user.picture} alt="profile pic" />
+                  {group.members.map((member) => member.name).join(', ')}
+                </li>
+              </p>
+            </div>
+
+            <ul>
+              {group.members.map((member) => (
+                <li key={user._id}>
+                  <span>{member.name}</span>
+                  <button onClick={() => handleGroupDeletion(user._id)}>
+                    -
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </ul>
+
+      <Link to="/group">
+        <button className="-green">Done</button>
+      </Link>
     </div>
   );
 };
 
-export default GroupAddMemberPage;
+export default GroupAddMembersPage;
