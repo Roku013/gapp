@@ -24,8 +24,6 @@ const GroupPage = () => {
 
   const { user } = useContext(AuthenticationContext);
 
-  console.log(groups.length);
-
   return (
     <div className="groups">
       {!user && <p>Log in to see the list of groups</p>}

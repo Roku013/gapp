@@ -23,7 +23,6 @@ const GroupAddMembersPage = (req) => {
 
   const handleMemberSearch = () => {
     groupMemberSearch(id, name).then((data) => {
-      console.log("handlesearch");
       setUsers(data.users);
     });
   };
@@ -36,7 +35,6 @@ const GroupAddMembersPage = (req) => {
   };
 
   const handleGroupMemberDeletion = (id, group) => {
-    console.log("handlememberdel ");
     groupMemberDelete(id, group); /* .then((data) => {
        navigate(`/group/${id}/member/add`);
     }); */

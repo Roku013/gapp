@@ -47,7 +47,7 @@ router.get('/', (req, res, next) => {
   //   let isGroupMember = groups.map((group) =>
   //     group.members.includes('62c2d905d60634e0fa216058')
   //   );
-  //   console.log('isGroupMember: ' + isGroupMember);
+
   //   if (isGroupMember) {
   //     return Group.find({
   //       // _id: { $nin: isGroupMember },
@@ -56,7 +56,7 @@ router.get('/', (req, res, next) => {
   //   }
   // })
   // .then((groups) => {
-  console.log('console logging');
+
   Group.find({
     name: { $regex: new RegExp(groupName, 'i') }
   })
@@ -97,7 +97,6 @@ router.get('/profile/:id', (req, res, next) => {
 router.post('/add', routeGuard, (req, res, next) => {
   const { name, description, picture } = req.body;
   const { creator } = req.user._id;
-  console.log('picture' + picture);
 
   Group.create({
     name,
@@ -117,7 +116,6 @@ router.post('/add', routeGuard, (req, res, next) => {
 router.get('/:id/member/search', (req, res, next) => {
   const { name } = req.query;
   const groupId = req.params.id;
-  // console.log(req.query);
 
   Group.findById(groupId)
     .then((group) => {
@@ -162,7 +160,6 @@ router.delete('/:id/member/add', (req, res, next) => {
   const memberId = req.params.id;
   const { group } = req.query;
 
-  console.log('here: ' + group);
   Group.findByIdAndUpdate(group, {
     $pull: { members: memberId }
   })
@@ -197,7 +194,6 @@ router.patch('/:id', routeGuard, (req, res, next) => {
   )
 
     .then((group) => {
-      // console.log(group);
       res.json({ group });
     })
     .catch((error) => {

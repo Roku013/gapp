@@ -5,8 +5,6 @@ import { groupMemberDelete } from '../services/group';
 const GroupMemberDeletePage = (req) => {
   const { id } = useParams();
   const { member } = req.body;
-  console.log('cxccx');
-  // const [group, setGroup] = useState(null);
 
   useEffect(() => {
     groupMemberDelete(id, member);
