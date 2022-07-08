@@ -14,7 +14,7 @@ const GroupAddPage = () => {
   const handleGroupCreation = () => {
     groupAdd(group).then((data) => {
       const id = data.group._id;
-      navigate(`/group/${id}`);
+      navigate(`/group/${id}/member/add`);
     });
   };
 
@@ -32,7 +32,7 @@ const GroupAddPage = () => {
         group={group}
         onGroupChange={setGroup}
         onGroupSubmit={handleGroupCreation}
-        buttonLabel="Create new Group"
+        buttonLabel="Next"
       />
     </div>
   );

@@ -5,7 +5,6 @@ import { signOutUser } from '../services/authentication';
 import GroupCard from '../components/GroupCard';
 import AuthenticationContext from '../context/authentication';
 import { listGroups } from '../services/group';
-import ImgProfile from '../components/ImgProfile';
 
 const ProfilePage = () => {
   const { id } = useParams();
@@ -63,8 +62,6 @@ const ProfilePage = () => {
           <h1>{profile.name}</h1>
         </div>
       )}
-
-      {!groups && <ImgProfile />}
 
       <div className="group-list-slide">
         {Boolean(groups) && (

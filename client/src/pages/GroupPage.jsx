@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import GroupCard from '../components/GroupCard';
-import { groupSearch, listGroups } from '../services/group';
+import { groupListLoad, groupSearch } from '../services/group';
 import AuthenticationContext from '../context/authentication';
 import GroupSearchForm from '../components/GroupSearchForm';
 import ImgGroups from '../components/ImgGroups';
@@ -12,20 +12,18 @@ const GroupPage = () => {
   const [groupName, setGroupName] = useState([]);
 
   useEffect(() => {
-    listGroups().then((data) => {
+    groupListLoad().then((data) => {
       setGroups(data.groups);
     });
   }, []);
 
   const handleGroupSearch = () => {
     groupSearch(groupName).then((data) => {
-      // console.log(data);
       setGroups(data.groups);
     });
   };
 
   const { user } = useContext(AuthenticationContext);
-  //const { group } = useContext(AuthenticationContext);
 
   return (
     <div className="groups">
