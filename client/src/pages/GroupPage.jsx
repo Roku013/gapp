@@ -1,10 +1,10 @@
-import React from 'react';
-import { useEffect, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import GroupCard from '../components/GroupCard';
-import { groupListLoad, groupSearch } from '../services/group';
-import AuthenticationContext from '../context/authentication';
-import GroupSearchForm from '../components/GroupSearchForm';
+import React from "react";
+import { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import GroupCard from "../components/GroupCard";
+import { groupListLoad, groupSearch } from "../services/group";
+import AuthenticationContext from "../context/authentication";
+import GroupSearchForm from "../components/GroupSearchForm";
 
 const GroupPage = () => {
   const [groups, setGroups] = useState([]);
@@ -25,16 +25,16 @@ const GroupPage = () => {
   const { user } = useContext(AuthenticationContext);
 
   return (
-    <div className="groups">
+    <div className='groups'>
       {!user && <p>Log in to see the list of groups</p>}
       {user && (
-        <div className="header">
+        <div className='header'>
           <Link to={`/profile/${user._id}`}>
-            <button className="back">Back</button>
+            <button className='back'>Back</button>
           </Link>
 
-          <Link to="/add">
-            <button className="create">+</button>
+          <Link to='/add'>
+            <button className='create'>+</button>
           </Link>
 
           <h1>Groups</h1>
@@ -46,9 +46,12 @@ const GroupPage = () => {
           onSearchQueryChange={setGroupName}
           onSearchSubmit={handleGroupSearch}
         />
-        <div className={groups.length === 0 ? 'group-img' : 'none'}>
-          <img src="/images/group.svg" alt="profileimage" />
-        </div>
+        {groups && (
+          <div className={groups.length === 0 ? "group-img" : "none"}>
+            <img src='/images/group.svg' alt='profileimage' />
+          </div>
+        )}
+
         <ul>
           {groups.map((group) => (
             <li key={group._id}>
@@ -65,21 +68,21 @@ const GroupPage = () => {
         </ul>
       </div>
 
-      <div className="navigation-bottom">
-        <div className="circle">
-          <Link className="active" to="/group">
+      <div className='navigation-bottom'>
+        <div className='circle'>
+          <Link className='active' to='/group'>
             <img
-              className="groups-icon"
-              src="/images/groups.svg"
-              alt="Groups"
+              className='groups-icon'
+              src='/images/groups.svg'
+              alt='Groups'
             />
           </Link>
           {user && (
             <Link to={`/profile/${user._id}`}>
               <img
-                className="profile-icon"
-                src="/images/profile.svg"
-                alt="Profile"
+                className='profile-icon'
+                src='/images/profile.svg'
+                alt='Profile'
               />
             </Link>
           )}
