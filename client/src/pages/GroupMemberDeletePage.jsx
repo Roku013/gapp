@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { groupRemove } from '../services/group';
+import { groupMemberDelete } from '../services/group';
 
-const GroupMemberDeletePage = () => {
+const GroupMemberDeletePage = (req) => {
   const { id } = useParams();
+  const { member } = req.body;
+  console.log('cxccx');
   // const [group, setGroup] = useState(null);
 
   useEffect(() => {
-    groupRemove(id);
-  }, [id]);
+    groupMemberDelete(id, member);
+  }, [id, member]);
 
   return (
     <div>

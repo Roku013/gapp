@@ -23,11 +23,13 @@ const GroupAddMembersPage = (req) => {
 
   const handleMemberSearch = () => {
     groupMemberSearch(id, name).then((data) => {
+      console.log("handlesearch");
       setUsers(data.users);
     });
   };
 
   const handleMemberAddition = (member) => {
+    window.location.reload(true);
     groupMemberAdd(id, member).then((data) => {
       navigate(`/group/${id}/member/add`);
     });
