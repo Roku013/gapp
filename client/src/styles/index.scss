@@ -585,3 +585,14 @@ button {
 .none {
   display: none;
 }
+
+.group-manage-members {
+  .no-style-btn {
+    background: none;
+    color: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: inherit;
+  }
+}

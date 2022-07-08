@@ -44,7 +44,7 @@ const GroupAddMembersPage = (req) => {
   const { user } = useContext(AuthenticationContext);
 
   return (
-    <div>
+    <div className="group-manage-members">
       <h1>Add new members</h1>
       <MemberForm
         member={name}
@@ -56,10 +56,19 @@ const GroupAddMembersPage = (req) => {
       <ul>
         {users.map((user) => (
           <li key={user._id}>
-            <img src="" alt="" />
+            <img
+              src={user.picture || '/images/green default profile picture.jpg'}
+              alt="profile pic"
+              width="50px"
+            />
             <span>{user.name}</span>
             <form action=""></form>
-            <button onClick={() => handleMemberAddition(user._id)}>+</button>
+            <button
+              className="no-style-btn"
+              onClick={() => handleMemberAddition(user._id)}
+            >
+              <img src="/images/plus-icon.svg" alt="plus icon" />
+            </button>
           </li>
         ))}
       </ul>
@@ -80,6 +89,14 @@ const GroupAddMembersPage = (req) => {
             <ul>
               {group.members.map((member) => (
                 <li key={member._id}>
+                  <img
+                    src={
+                      member.picture ||
+                      '/images/green default profile picture.jpg'
+                    }
+                    width="50px"
+                    alt="profile pic"
+                  />
                   <span>{member.name}</span>
                   <form
                     method="DELETE"
@@ -89,7 +106,9 @@ const GroupAddMembersPage = (req) => {
                     }
                     //onSubmit={handleGroupMemberDeletion}
                   >
-                    <button className="-green">Delete member</button>
+                    <button className="no-style-btn">
+                      <img src="/images/minus-icon.svg" alt="minus icon" />
+                    </button>
                   </form>
                   {/*  <button onClick={() => handleGroupMemberDeletion(member._id)}>
                     -
