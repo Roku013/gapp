@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
 // member addition
 router.post('/member/edit', routeGuard, (req, res, next) => {
   const { name } = req.body;
-  console.log(name);
+  // console.log(name);
 
   Group.create({
     name,

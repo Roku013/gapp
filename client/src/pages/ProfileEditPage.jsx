@@ -6,7 +6,6 @@ import { profileEdit, profileLoad } from "../services/profile";
 import { useNavigate } from "react-router-dom";
 
 const ProfileEditPage = () => {
-  const { id } = useParams();
   const [profile, setProfile] = useState(null);
 
   const navigate = useNavigate();
@@ -21,7 +20,6 @@ const ProfileEditPage = () => {
 
   const handleProfileEdit = () => {
     let id = user._id;
-    console.log(id);
     profileEdit(id, profile).then((data) => {
       setUser(data.profile);
       navigate(`/profile/${id}`);
@@ -30,15 +28,14 @@ const ProfileEditPage = () => {
 
   return (
     <div>
-      {/* <div className="header-profile-edit">
-        <Link to={`/profile/${id}`}>
-          <button className="back">Back</button>
+      <div className='header-profile-edit'>
+        <Link to={`/profile/${user._id}`}>
+          <button className='back'>Back</button>
         </Link>
 
         <h1>Edit Profile</h1>
-      </div> */}
+      </div>
 
-      <h1>Edit Profile</h1>
       {profile && (
         <AuthenticationForm
           user={profile}
@@ -58,15 +55,13 @@ const ProfileEditPage = () => {
               alt='Groups'
             />
           </Link>
-          {user && (
-            <Link className='active' to={`/profile/${id}`}>
-              <img
-                className='profile-icon'
-                src='/images/profile.svg'
-                alt='Profile'
-              />
-            </Link>
-          )}
+          <Link className='active' to={`/profile/${user._id}`}>
+            <img
+              className='profile-icon'
+              src='/images/profile.svg'
+              alt='Profile'
+            />
+          </Link>
         </div>
       </div>
     </div>

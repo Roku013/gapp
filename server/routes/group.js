@@ -19,24 +19,27 @@ router.get('/', (req, res, next) => {
 
 router.get('/', (req, res, next) => {
   const { groupName } = req.query;
+
+  //   let isGroupMember = groups.map((group) =>
+  //     group.members.includes('62c2d905d60634e0fa216058')
+  //   );
+  //   console.log('isGroupMember: ' + isGroupMember);
+  //   if (isGroupMember) {
+  //     return Group.find({
+  //       // _id: { $nin: isGroupMember },
+  //       name: { $regex: new RegExp(groupName, 'i') }
+  //     });
+  //   }
+  // })
+  // .then((groups) => {
+  console.log('console logging');
   Group.find({
+    name: { $regex: new RegExp(groupName, 'i') },
     members: {
       $in: [req.user._id]
     }
   })
     .then((groups) => {
-      //   let isGroupMember = groups.map((group) =>
-      //     group.members.includes('62c2d905d60634e0fa216058')
-      //   );
-      //   console.log('isGroupMember: ' + isGroupMember);
-      //   if (isGroupMember) {
-      //     return Group.find({
-      //       // _id: { $nin: isGroupMember },
-      //       name: { $regex: new RegExp(groupName, 'i') }
-      //     });
-      //   }
-      // })
-      // .then((groups) => {
       res.json({ groups });
     })
     .catch((error) => {
@@ -70,15 +73,21 @@ router.get('/list-all', (req, res, next) => {
 
 // group creation
 router.post('/add', routeGuard, (req, res, next) => {
-  const { name, description } = req.body;
+  const { name, description, picture } = req.body;
   const { creator } = req.user._id;
   // console.log(name);
 
-  Group.create({
-    name,
-    description,
-    creator: req.user._id
-  })
+  Group.create(
+    {
+      name,
+      description,
+      picture,
+      creator: req.user._id
+    },
+    {
+      $push: { members: user._id }
+    }
+  )
     .then((group) => {
       res.json({ group });
     })
@@ -89,7 +98,7 @@ router.post('/add', routeGuard, (req, res, next) => {
 router.get('/:id/member/search', (req, res, next) => {
   const { name } = req.query;
   const groupId = req.params.id;
-  console.log(req.query);
+  // console.log(req.query);
 
   Group.findById(groupId)
     .then((group) => {
@@ -154,6 +163,7 @@ router.patch('/:id', routeGuard, (req, res, next) => {
   )
 
     .then((group) => {
+      // console.log(group);
       res.json({ group });
     })
     .catch((error) => {
