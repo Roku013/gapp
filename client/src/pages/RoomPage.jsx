@@ -89,6 +89,11 @@ const RoomPage = () => {
             </li>
           ))}
         </ul>
+        <img
+          className="chat-bg"
+          src="/images/chatBG.svg"
+          alt="background img"
+        />
       </div>
       <form className="message" onSubmit={handleSubmission}>
         <button>
