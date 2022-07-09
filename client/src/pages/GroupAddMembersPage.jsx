@@ -1,17 +1,17 @@
-import { useState, useEffect, useContext } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import MemberForm from '../components/MemberForm';
+import { useState, useEffect, useContext } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import MemberForm from "../components/MemberForm";
 import {
   groupLoad,
   groupMemberAdd,
   groupMemberDelete,
   groupMemberSearch
-} from '../services/group';
-import AuthenticationContext from '../context/authentication';
+} from "../services/group";
+import AuthenticationContext from "../context/authentication";
 
 const GroupAddMembersPage = (req) => {
   const { id } = useParams();
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [users, setUsers] = useState([]);
   const [group, setGroup] = useState(null);
 
@@ -42,30 +42,35 @@ const GroupAddMembersPage = (req) => {
   const { user } = useContext(AuthenticationContext);
 
   return (
-    <div className="group-manage-members">
-      <h1>Add new members</h1>
+    <div className='group-manage-members'>
+      <div className='header'>
+        <Link to={`/group/profile/${id}`}>
+          <button className='back'>Back</button>
+        </Link>
+        <h1>Members</h1>
+      </div>
       <MemberForm
         member={name}
         onSearchQueryChange={setName}
         onSearchSubmit={handleMemberSearch}
-        buttonLabel="Add new member"
+        buttonLabel='Add new member'
       />
 
       <ul>
         {users.map((user) => (
           <li key={user._id}>
             <img
-              src={user.picture || '/images/green default profile picture.jpg'}
-              alt="profile pic"
-              width="50px"
+              src={user.picture || "/images/green default profile picture.jpg"}
+              alt='profile pic'
+              width='50px'
             />
             <span>{user.name}</span>
-            <form action=""></form>
+            <form action=''></form>
             <button
-              className="no-style-btn"
+              className='no-style-btn'
               onClick={() => handleMemberAddition(user._id)}
             >
-              <img src="/images/plus-icon.svg" alt="plus icon" />
+              <img src='/images/plus-icon.svg' alt='plus icon' />
             </button>
           </li>
         ))}
@@ -90,22 +95,22 @@ const GroupAddMembersPage = (req) => {
                   <img
                     src={
                       member.picture ||
-                      '/images/green default profile picture.jpg'
+                      "/images/green default profile picture.jpg"
                     }
-                    width="50px"
-                    alt="profile pic"
+                    width='50px'
+                    alt='profile pic'
                   />
                   <span>{member.name}</span>
                   <form
-                    method="DELETE"
+                    method='DELETE'
                     //  action="/group"
                     onClick={() =>
                       handleGroupMemberDeletion(member._id, group._id)
                     }
                     //onSubmit={handleGroupMemberDeletion}
                   >
-                    <button className="no-style-btn">
-                      <img src="/images/minus-icon.svg" alt="minus icon" />
+                    <button className='no-style-btn'>
+                      <img src='/images/minus-icon.svg' alt='minus icon' />
                     </button>
                   </form>
                   {/*  <button onClick={() => handleGroupMemberDeletion(member._id)}>
@@ -118,25 +123,25 @@ const GroupAddMembersPage = (req) => {
         )}
       </ul>
 
-      <Link to="/group">
-        <button className="-green">Done</button>
+      <Link to='/group'>
+        <button className='-green'>Done</button>
       </Link>
 
-      <div className="navigation-bottom">
-        <div className="circle">
-          <Link className="active" to={`/group/${id}`}>
+      <div className='navigation-bottom'>
+        <div className='circle'>
+          <Link className='active' to={`/group/${id}`}>
             <img
-              className="groups-icon"
-              src="/images/groups.svg"
-              alt="Groups"
+              className='groups-icon'
+              src='/images/groups.svg'
+              alt='Groups'
             />
           </Link>
           {user && (
             <Link to={`/profile/${user._id}`}>
               <img
-                className="profile-icon"
-                src="/images/profile.svg"
-                alt="Profile"
+                className='profile-icon'
+                src='/images/profile.svg'
+                alt='Profile'
               />
             </Link>
           )}
