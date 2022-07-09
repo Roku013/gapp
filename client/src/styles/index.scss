@@ -123,6 +123,13 @@ button {
   color: white;
 }
 
+.-red {
+  background: #db523c;
+  border-radius: 100px;
+  color: white;
+  margin-bottom: 100px;
+}
+
 .sign-up {
   .sign-up-img {
     img {
@@ -389,6 +396,7 @@ button {
     margin: 0 auto;
     position: relative;
     display: block;
+    max-height: 300px;
   }
 
   input {
@@ -589,12 +597,101 @@ button {
 }
 
 .group-manage-members {
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    width: 100%;
+    position: relative;
+  }
+
+  li {
+    height: 100%;
+    position: relative;
+  }
+
   .no-style-btn {
     background: none;
-    color: none;
     border: none;
     padding: 0;
     cursor: pointer;
     outline: inherit;
+    width: 34px;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    height: auto;
+  }
+}
+
+.group-settings {
+  img {
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    max-height: 300px;
+  }
+
+  .group-info {
+    h1 {
+      // text-align: left;
+    }
+
+    p {
+      text-align: left;
+      color: black;
+    }
+  }
+
+  .header {
+    width: 100%;
+    height: $heigth-header;
+    padding-top: 16px;
+    background-color: white;
+    position: relative;
+
+    button {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+      width: auto;
+      height: auto;
+      position: absolute;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    h1 {
+      width: 200px;
+      margin: 0 auto;
+      color: black;
+      font-weight: 600;
+      font-size: 30px;
+      overflow: hidden;
+      // text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .back {
+      margin: 10px;
+      color: #5db075;
+    }
+  }
+}
+.edit-group-image {
+  img {
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    max-height: 300px;
+  }
+
+  input {
+    border: none;
+    background: none;
   }
 }
