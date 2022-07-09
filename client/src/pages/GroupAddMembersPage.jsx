@@ -43,7 +43,12 @@ const GroupAddMembersPage = (req) => {
 
   return (
     <div className="group-manage-members">
-      <h1>Add new members</h1>
+      <div className="header">
+        <Link to={`/group/profile/${id}`}>
+          <button className="back">Back</button>
+        </Link>
+        <h1>Members</h1>
+      </div>
       <MemberForm
         member={name}
         onSearchQueryChange={setName}

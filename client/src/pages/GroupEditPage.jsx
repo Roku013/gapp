@@ -22,8 +22,14 @@ const GroupEditPage = () => {
 
   const { user } = useContext(AuthenticationContext);
   return (
-    <div>
-      <h1>Edit Group</h1>
+    <div className='group-edit-page'>
+      <div className='header'>
+        <Link to={`/group/profile/${id}`}>
+          <button className='back'>Back</button>
+        </Link>
+        <h1>Edit Group</h1>
+      </div>
+
       {group && (
         <GroupForm
           group={group}
