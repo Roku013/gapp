@@ -43,6 +43,7 @@ const RegisterPage = () => {
 
       <form onSubmit={handleRegistration}>
         <input
+          maxLength={20}
           id="input-name"
           placeholder="Name"
           value={name}

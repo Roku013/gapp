@@ -12,6 +12,7 @@ const AuthenticationForm = (props) => {
         <>
           {/* <label htmlFor="input-name">Name</label> */}
           <input
+            maxLength={20}
             id="input-name"
             type="text"
             placeholder="Name"
