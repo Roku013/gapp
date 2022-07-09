@@ -597,6 +597,8 @@ button {
 }
 
 .group-manage-members {
+  margin-bottom: 200px;
+
   ul {
     list-style-type: none;
     padding-left: 0;
@@ -633,10 +635,6 @@ button {
   }
 
   .group-info {
-    h1 {
-      // text-align: left;
-    }
-
     p {
       text-align: left;
       color: black;
