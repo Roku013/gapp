@@ -60,7 +60,7 @@ const HomePage = () => {
       </form>
       <p>
         No account yet?
-        <Link to="/register">Sign up!</Link>
+        <Link to="/register"> Sign up!</Link>
       </p>
       <div>
         <img className="home-bg" src="/images/BG6.svg" alt="Gapp logo" />

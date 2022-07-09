@@ -5,9 +5,7 @@ const MemberForm = ({ name, onSearchQueryChange, onSearchSubmit }) => {
   };
   return (
     <form onSubmit={handleMemberFormSubmission}>
-      <label htmlFor="input-listed">
-        <p>Member name:</p>
-      </label>
+      <label htmlFor="input-listed">{/* <p>Member name:</p> */}</label>
       <div>
         <input
           id="input-listed"
