@@ -53,13 +53,14 @@ const GroupAddMembersPage = (req) => {
 
       <ul>
         {users.map((user) => (
-          <li key={user._id}>
+          <li className="members-card" key={user._id}>
             <img
+              className="members-profile-pic"
               src={user.picture || '/images/green default profile picture.jpg'}
               alt="profile pic"
               width="50px"
             />
-            <span>{user.name}</span>
+            <span className="member-name">{user.name}</span>
             <form action=""></form>
             <button
               className="no-style-btn"
@@ -75,42 +76,30 @@ const GroupAddMembersPage = (req) => {
         {user && group && (
           <>
             <p>Added members:</p>
-            {/* <ul>
-              <p>
-                <li key={user._id}>
-                  <img width="50px" src={user.picture} alt="profile pic" />
-                  {group.members.map((member) => member.name).join(', ')}
-                </li>
-              </p>
-            </ul> */}
 
             <ul>
               {group.members.map((member) => (
-                <li key={member._id}>
+                <li className="members-card" key={member._id}>
                   <img
+                    className="members-profile-pic"
                     src={
                       member.picture ||
                       '/images/green default profile picture.jpg'
                     }
-                    width="50px"
                     alt="profile pic"
                   />
-                  <span>{member.name}</span>
+                  <span className="member-name"> {member.name}</span>
                   <form
                     method="DELETE"
                     //  action="/group"
                     onClick={() =>
                       handleGroupMemberDeletion(member._id, group._id)
                     }
-                    //onSubmit={handleGroupMemberDeletion}
                   >
                     <button className="no-style-btn">
                       <img src="/images/minus-icon.svg" alt="minus icon" />
                     </button>
                   </form>
-                  {/*  <button onClick={() => handleGroupMemberDeletion(member._id)}>
-                    -
-                  </button> */}
                 </li>
               ))}
             </ul>

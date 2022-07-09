@@ -32,7 +32,7 @@ const HomePage = () => {
   return (
     <div className="bg-color">
       <img className="logo" src="/images/logo.png" alt="Gapp logo" />
-      <h1 className="white-txt">Log in</h1>
+      <h1>Log in</h1>
       {/* login form */}
       <form onSubmit={handleLogIn}>
         <input
@@ -60,10 +60,7 @@ const HomePage = () => {
       </form>
       <p>
         No account yet?
-        <Link className="white-txt" to="/register">
-          {' '}
-          Sign up!
-        </Link>
+        <Link to="/register">Sign up!</Link>
       </p>
       <div>
         <img className="home-bg" src="/images/BG6.svg" alt="Gapp logo" />
