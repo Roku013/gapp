@@ -280,7 +280,7 @@ button {
     .chat-bg {
       opacity: 30%;
       position: absolute;
-      width: 100%;
+      max-width: 400px;
     }
     ul {
       padding-left: 0px;
